@@ -1,19 +1,19 @@
 #!/bin/bash
-# scripts/build.sh - Build with password protection
-
 set -e
 
-# Run vault fetch
 npm run fetch-vault
-
-# Build with Vite
 npx vite build
 
-# Apply password protection if SITE_PASSWORD is set
+echo "=== Before staticrypt ==="
+ls -la dist/index.html
+cat dist/index.html
+
 if [ -n "$SITE_PASSWORD" ]; then
-  echo "Applying password protection..."
+  echo "=== Running staticrypt ==="
   npx staticrypt dist/index.html -p "$SITE_PASSWORD" -o dist/index.html
-  echo "Password protection applied."
+  echo "=== After staticrypt ==="
+  ls -la dist/index.html
+  head -50 dist/index.html
 else
-  echo "WARNING: SITE_PASSWORD not set, site will be unprotected!"
+  echo "WARNING: SITE_PASSWORD not set!"
 fi
