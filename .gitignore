@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Environment variables (contains local paths, tokens)
+.env
+.env.local
+.env.*.local
+
+# Vault temp folder (created during CI builds)
+.vault-temp/
+
+# Editor/IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Optional: uncomment if you want to commit compiled assets
+# This would let the site work without vault access but defeats the purpose
+# src/assets/paper.md
+# public/h-omega-synthesis.md
+# public/thermodynamic-grounding.md
+# public/configuration-dynamics.md
