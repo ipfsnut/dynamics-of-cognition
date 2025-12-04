@@ -7,7 +7,7 @@
     "fetch-vault": "./scripts/fetch-vault.sh",
     "dev": "npm run fetch-vault && vite",
     "dev:skip-fetch": "vite",
-    "build": "./scripts/build.sh",
+    "build": "bash scripts/build.sh",
     "build:skip-fetch": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
