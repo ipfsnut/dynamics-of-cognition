@@ -12,7 +12,7 @@ npx vite build
 # Apply password protection if SITE_PASSWORD is set
 if [ -n "$SITE_PASSWORD" ]; then
   echo "Applying password protection..."
-  npx staticrypt dist/index.html -p "$SITE_PASSWORD" --short
+  npx staticrypt dist/index.html -p "$SITE_PASSWORD" -o dist/index.html
   echo "Password protection applied."
 else
   echo "WARNING: SITE_PASSWORD not set, site will be unprotected!"
