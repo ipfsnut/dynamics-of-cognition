@@ -14,5 +14,5 @@ echo "Password length: ${#SITE_PASSWORD}"
 echo "Password set: $([ -n "$SITE_PASSWORD" ] && echo 'yes' || echo 'no')"
 
 echo "=== Running staticrypt ==="
-npx staticrypt dist/index.html -p "$SITE_PASSWORD" --short
+npx staticrypt dist/index.html -p "$SITE_PASSWORD" -d dist
 echo "Staticrypt completed successfully - index.html has been encrypted"
