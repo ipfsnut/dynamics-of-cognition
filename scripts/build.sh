@@ -9,10 +9,7 @@ fi
 npm run fetch-vault
 npx vite build
 
-echo "=== Password check ==="
-echo "Password length: ${#SITE_PASSWORD}"
-echo "Password set: $([ -n "$SITE_PASSWORD" ] && echo 'yes' || echo 'no')"
-
-echo "=== Running staticrypt ==="
-npx staticrypt dist/index.html -p "$SITE_PASSWORD" -d dist
-echo "Staticrypt completed successfully - index.html has been encrypted"
+echo ""
+echo "=== Build complete! ==="
+echo "The dist/ folder is ready for deployment."
+echo "Password protection is now built into the React app."
