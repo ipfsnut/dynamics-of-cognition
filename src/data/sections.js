@@ -6,7 +6,7 @@ export const SECTIONS = [
     id: 'intro',
     slug: 'introduction',
     number: null,
-    title: 'A Unified Model of Statistical Dynamics in Cognition',
+    title: 'The Dynamics of Cognition',
     subtitle: 'Scale-free biological intelligence from cells to societies',
     simulation: null, // Intro has no simulation
     references: ['friston2010', 'friston2023', 'levin2021', 'damasio2021'],
