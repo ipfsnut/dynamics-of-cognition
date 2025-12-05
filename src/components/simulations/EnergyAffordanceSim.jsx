@@ -404,7 +404,7 @@ export function EnergyAffordanceSim({ width, height, isMobile = false, isFullscr
       </CollapsiblePanel>
       
       {/* ATP Meter */}
-      <div className={`absolute ${isFullscreen ? 'top-16 right-4' : 'top-4 right-4'} bg-void/90 backdrop-blur-sm border border-border rounded-lg p-3 w-52">
+      <div className={`absolute ${isFullscreen ? 'top-16 right-4' : 'top-4 right-4'} bg-void/90 backdrop-blur-sm border border-border rounded-lg p-3 w-52`}>
         <div className="flex justify-between items-center mb-2">
           <span className="text-xs font-mono text-glow">ATP Level</span>
           <span className="text-xs font-mono" style={{ color: atpBarColor }}>
