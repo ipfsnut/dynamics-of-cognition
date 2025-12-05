@@ -442,13 +442,13 @@ export function AutopoiesisSim({ width, height, isMobile = false, isFullscreen =
         <div className="flex flex-col gap-2">
           <button
             onClick={handleDamage}
-            className="px-3 py-1 bg-red-500/20 border border-red-500 rounded text-xs font-mono text-red-400 hover:bg-red-500/30 transition-colors"
+            className={`${isMobile || isFullscreen ? 'px-3 py-2 text-sm min-h-[44px]' : 'px-3 py-1 text-xs'} bg-red-500/20 border border-red-500 rounded font-mono text-red-400 hover:bg-red-500/30 transition-colors`}
           >
             Damage Membrane
           </button>
           <button
             onClick={() => setShowFlows(!showFlows)}
-            className={`px-3 py-1 border rounded text-xs font-mono transition-colors ${
+            className={`${isMobile || isFullscreen ? 'px-3 py-2 text-sm min-h-[44px]' : 'px-3 py-1 text-xs'} border rounded font-mono transition-colors ${
               showFlows
                 ? 'bg-glow/20 border-glow text-glow'
                 : 'bg-surface border-border text-muted'
@@ -458,7 +458,7 @@ export function AutopoiesisSim({ width, height, isMobile = false, isFullscreen =
           </button>
           <button
             onClick={handleReset}
-            className="px-3 py-1 bg-surface border border-border rounded text-xs font-mono text-muted hover:text-text transition-colors"
+            className={`${isMobile || isFullscreen ? 'px-3 py-2 text-sm min-h-[44px]' : 'px-3 py-1 text-xs'} bg-surface border border-border rounded font-mono text-muted hover:text-text transition-colors`}
           >
             Reset
           </button>

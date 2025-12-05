@@ -608,7 +608,7 @@ export function AnnealingSim({ width, height, isMobile = false, isFullscreen = f
       </CollapsibleControlPanel>
       
       {/* Action Buttons */}
-      <div className="absolute top-4 right-4 flex flex-col gap-2 z-10" style={{ marginRight: isMobile ? 0 : 170 }}>
+      <div className={`absolute ${isFullscreen ? 'top-16 right-4' : 'top-4 right-4'} flex flex-col gap-2 z-10`} style={{ marginRight: isMobile || isFullscreen ? 0 : 170 }}>
         <button
           onClick={handleQuench}
           className="px-3 py-2 bg-red-900/50 border border-red-500 rounded text-xs font-mono text-red-400 hover:bg-red-800/50 transition-colors"
@@ -617,7 +617,7 @@ export function AnnealingSim({ width, height, isMobile = false, isFullscreen = f
         </button>
         <button
           onClick={() => setShowTrajectory(!showTrajectory)}
-          className={`px-3 py-1 border rounded text-xs font-mono transition-colors ${
+          className={`${isMobile || isFullscreen ? 'px-3 py-2 text-sm min-h-[44px]' : 'px-3 py-1 text-xs'} border rounded font-mono transition-colors ${
             showTrajectory
               ? 'bg-glow/20 border-glow text-glow'
               : 'bg-surface border-border text-muted hover:text-text'
@@ -627,7 +627,7 @@ export function AnnealingSim({ width, height, isMobile = false, isFullscreen = f
         </button>
         <button
           onClick={handleReset}
-          className="px-3 py-1 bg-surface border border-border rounded text-xs font-mono text-muted hover:text-text transition-colors"
+          className={`${isMobile || isFullscreen ? 'px-3 py-2 text-sm min-h-[44px]' : 'px-3 py-1 text-xs'} bg-surface border border-border rounded font-mono text-muted hover:text-text transition-colors`}
         >
           Reset (Safe)
         </button>

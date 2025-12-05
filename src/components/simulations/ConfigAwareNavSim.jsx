@@ -390,10 +390,10 @@ export function ConfigAwareNavSim({ width, height, isMobile = false, isFullscree
       </CollapsiblePanel>
       
       {/* Controls */}
-      <div className="absolute top-4 right-4 flex gap-2">
+      <div className={`absolute ${isFullscreen ? 'top-16 right-4' : 'top-4 right-4'} flex gap-2`}>
         <button
           onClick={() => setIsPaused(!isPaused)}
-          className={`px-3 py-1 border rounded text-xs font-mono transition-colors ${
+          className={`${isMobile || isFullscreen ? 'px-3 py-2 text-sm min-h-[44px]' : 'px-3 py-1 text-xs'} border rounded font-mono transition-colors ${
             isPaused
               ? 'bg-glow/20 border-glow text-glow'
               : 'bg-surface border-border text-muted hover:text-text'
@@ -403,13 +403,13 @@ export function ConfigAwareNavSim({ width, height, isMobile = false, isFullscree
         </button>
         <button
           onClick={() => setSpeed(speed === 1 ? 3 : speed === 3 ? 5 : 1)}
-          className="px-3 py-1 bg-surface border border-border rounded text-xs font-mono text-muted hover:text-text"
+          className={`${isMobile || isFullscreen ? 'px-3 py-2 text-sm min-h-[44px]' : 'px-3 py-1 text-xs'} bg-surface border border-border rounded font-mono text-muted hover:text-text`}
         >
           {speed}x
         </button>
         <button
           onClick={handleReset}
-          className="px-3 py-1 bg-surface border border-border rounded text-xs font-mono text-muted hover:text-text"
+          className={`${isMobile || isFullscreen ? 'px-3 py-2 text-sm min-h-[44px]' : 'px-3 py-1 text-xs'} bg-surface border border-border rounded font-mono text-muted hover:text-text`}
         >
           Reset
         </button>

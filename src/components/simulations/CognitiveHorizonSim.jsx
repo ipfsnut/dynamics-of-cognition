@@ -373,7 +373,7 @@ export function CognitiveHorizonSim({ width, height, isMobile = false, isFullscr
       </CollapsiblePanel>
       
       {/* Configuration controls */}
-      <div className="absolute top-4 right-4 flex flex-col gap-2">
+      <div className={`absolute ${isFullscreen ? 'top-16 right-4' : 'top-4 right-4'} flex flex-col gap-2`}>
         <div className="bg-void/90 backdrop-blur-sm border border-border rounded-lg p-3 w-48">
           <div className="text-xs font-mono text-glow mb-2">Body Configuration (ω)</div>
           {Object.entries(CONFIGURATIONS).map(([key, cfg]) => (

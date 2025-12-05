@@ -405,13 +405,13 @@ export function ConfigurationAwarenessSim({ width, height, isMobile = false, isF
       <div className="absolute bottom-4 right-4 flex gap-2">
         <button
           onClick={handleNewGoal}
-          className="px-3 py-1 bg-surface border border-border rounded text-xs font-mono text-muted hover:text-text transition-colors"
+          className={`${isMobile || isFullscreen ? 'px-3 py-2 text-sm min-h-[44px]' : 'px-3 py-1 text-xs'} bg-surface border border-border rounded font-mono text-muted hover:text-text transition-colors`}
         >
           New Goal
         </button>
         <button
           onClick={handleReset}
-          className="px-3 py-1 bg-surface border border-border rounded text-xs font-mono text-muted hover:text-text transition-colors"
+          className={`${isMobile || isFullscreen ? 'px-3 py-2 text-sm min-h-[44px]' : 'px-3 py-1 text-xs'} bg-surface border border-border rounded font-mono text-muted hover:text-text transition-colors`}
         >
           Reset
         </button>

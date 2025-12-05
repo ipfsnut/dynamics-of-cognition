@@ -290,13 +290,13 @@ export function NestedBlanketsSim({ width, height, isMobile = false, isFullscree
         <div className="flex gap-2">
           <button
             onClick={() => cycleScale(-1)}
-            className="px-3 py-1 bg-surface border border-border rounded text-xs font-mono text-muted hover:text-text transition-colors"
+            className={`${isMobile || isFullscreen ? 'px-3 py-2 text-sm min-h-[44px]' : 'px-3 py-1 text-xs'} bg-surface border border-border rounded font-mono text-muted hover:text-text transition-colors`}
           >
             ↓ Zoom In
           </button>
           <button
             onClick={() => cycleScale(1)}
-            className="px-3 py-1 bg-surface border border-border rounded text-xs font-mono text-muted hover:text-text transition-colors"
+            className={`${isMobile || isFullscreen ? 'px-3 py-2 text-sm min-h-[44px]' : 'px-3 py-1 text-xs'} bg-surface border border-border rounded font-mono text-muted hover:text-text transition-colors`}
           >
             ↑ Zoom Out
           </button>
