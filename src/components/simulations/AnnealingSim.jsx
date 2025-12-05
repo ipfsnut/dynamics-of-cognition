@@ -248,7 +248,7 @@ function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
   ctx.fillText(line, x, yPos);
 }
 
-export function AnnealingSim({ width, height, isMobile = false }) {
+export function AnnealingSim({ width, height, isMobile = false, isFullscreen = false }) {
   const canvasRef = useRef(null);
   const basinsRef = useRef(null);
   const landscapeRef = useRef(null);
@@ -566,7 +566,7 @@ export function AnnealingSim({ width, height, isMobile = false }) {
       />
       
       {/* Info Panel - Collapsible */}
-      <CollapsiblePanel title="Configuration Constraint" position="top-left" defaultOpen={!isMobile}>
+      <CollapsiblePanel title="Configuration Constraint" position="top-left" defaultOpen={!isMobile} isFullscreen={isFullscreen}>
         <div className="text-muted">
           The ball is your whole-body configuration. High precision traps you in 
           current states. <span className="text-red-400">Quench</span> simulates 
@@ -576,7 +576,7 @@ export function AnnealingSim({ width, height, isMobile = false }) {
       </CollapsiblePanel>
       
       {/* Precision Control - Collapsible */}
-      <CollapsibleControlPanel title="PRECISION (inverse temperature)" position="bottom-left" defaultOpen={!isMobile}>
+      <CollapsibleControlPanel title="PRECISION (inverse temperature)" position="bottom-left" defaultOpen={!isMobile} isFullscreen={isFullscreen}>
         <div className="text-xs text-muted/60 mb-2">High = rigid, trapped • Low = flexible</div>
         <input
           type="range"

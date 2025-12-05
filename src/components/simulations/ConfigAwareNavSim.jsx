@@ -157,7 +157,7 @@ function generateThoughts() {
   return thoughts;
 }
 
-export function ConfigAwareNavSim({ width, height, isMobile = false }) {
+export function ConfigAwareNavSim({ width, height, isMobile = false, isFullscreen = false }) {
   const canvasRef = useRef(null);
   const animationRef = useRef(null);
   const timeRef = useRef(0);
@@ -380,7 +380,7 @@ export function ConfigAwareNavSim({ width, height, isMobile = false }) {
       />
       
       {/* Info */}
-      <CollapsiblePanel title="Configuration-Aware Navigation" position="top-left" defaultOpen={!isMobile} width="w-64">
+      <CollapsiblePanel title="Configuration-Aware Navigation" position="top-left" defaultOpen={!isMobile} width="w-64" isFullscreen={isFullscreen}>
         <div className="text-muted text-xs">
           Both agents start stressed (contracted H(ω)) and must reach a target thought. 
           The <span className="text-gray-400">blind</span> agent drifts randomly. 
@@ -416,7 +416,7 @@ export function ConfigAwareNavSim({ width, height, isMobile = false }) {
       </div>
       
       {/* Comparison stats */}
-      <CollapsiblePanel title="COMPARISON" position="bottom-right" defaultOpen={!isMobile}>
+      <CollapsiblePanel title="COMPARISON" position="bottom-right" defaultOpen={!isMobile} isFullscreen={isFullscreen}>
         <div className="grid grid-cols-2 gap-4 text-xs font-mono">
           <div>
             <div className="text-gray-400 mb-1">Blind</div>

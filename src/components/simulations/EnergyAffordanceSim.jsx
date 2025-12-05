@@ -103,7 +103,7 @@ function atpToRadius(atp) {
   return minRadius + (maxRadius - minRadius) * Math.pow(atp / 100, 0.6);
 }
 
-export function EnergyAffordanceSim({ width, height, isMobile = false }) {
+export function EnergyAffordanceSim({ width, height, isMobile = false, isFullscreen = false }) {
   const canvasRef = useRef(null);
   const animationRef = useRef(null);
   const timeRef = useRef(0);
@@ -396,7 +396,7 @@ export function EnergyAffordanceSim({ width, height, isMobile = false }) {
       />
       
       {/* Info panel */}
-      <CollapsiblePanel title="Energy & Affordances" position="top-left" defaultOpen={!isMobile}>
+      <CollapsiblePanel title="Energy & Affordances" position="top-left" defaultOpen={!isMobile} isFullscreen={isFullscreen}>
         <div className="text-muted text-xs leading-relaxed">
           Configuration has costs. The cognitive horizon H(ω) contracts as ATP depletes. 
           Expensive thoughts (⚡⚡⚡) become inaccessible first.
@@ -447,7 +447,7 @@ export function EnergyAffordanceSim({ width, height, isMobile = false }) {
       </div>
       
       {/* Status panel */}
-      <CollapsiblePanel title="METABOLIC STATUS" position="bottom-left" defaultOpen={!isMobile} width="w-56">
+      <CollapsiblePanel title="METABOLIC STATUS" position="bottom-left" defaultOpen={!isMobile} width="w-56" isFullscreen={isFullscreen}>
         <div className="font-mono">
           <div className="text-2xl" style={{ color: atpBarColor }}>
             {accessibleCount}

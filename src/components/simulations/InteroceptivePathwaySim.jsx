@@ -62,7 +62,7 @@ function createEfferent(x, startY) {
   };
 }
 
-export function InteroceptivePathwaySim({ width, height, isMobile = false }) {
+export function InteroceptivePathwaySim({ width, height, isMobile = false, isFullscreen = false }) {
   const canvasRef = useRef(null);
   const animationRef = useRef(null);
   const particlesRef = useRef([]);
@@ -384,7 +384,7 @@ export function InteroceptivePathwaySim({ width, height, isMobile = false }) {
       />
       
       {/* Feeling State - Collapsible */}
-      <CollapsiblePanel title="GLOBAL FEELING" position="top-left" defaultOpen={!isMobile}>
+      <CollapsiblePanel title="GLOBAL FEELING" position="top-left" defaultOpen={!isMobile} isFullscreen={isFullscreen}>
         <div className="flex gap-4 text-xs font-mono">
           <div>
             <span className="text-muted">Valence:</span>{' '}
@@ -402,7 +402,7 @@ export function InteroceptivePathwaySim({ width, height, isMobile = false }) {
       </CollapsiblePanel>
       
       {/* Controls - Collapsible */}
-      <CollapsibleControlPanel title="SIGNAL INTENSITY" position="bottom-right" defaultOpen={!isMobile}>
+      <CollapsibleControlPanel title="SIGNAL INTENSITY" position="bottom-right" defaultOpen={!isMobile} isFullscreen={isFullscreen}>
         <div className="space-y-2">
           {SIGNAL_TYPES.map(signal => (
             <div key={signal.id} className="flex items-center gap-2">
@@ -459,7 +459,7 @@ export function InteroceptivePathwaySim({ width, height, isMobile = false }) {
       </CollapsibleControlPanel>
       
       {/* Info - Collapsible */}
-      <CollapsiblePanel title="Interoceptive Pathway" position="top-right" defaultOpen={!isMobile}>
+      <CollapsiblePanel title="Interoceptive Pathway" position="top-right" defaultOpen={!isMobile} isFullscreen={isFullscreen}>
         <div className="text-muted">
           Raw body signals converge through integration layers into a unified 
           "now"—how you feel this moment. Green dots are efferent regulation 

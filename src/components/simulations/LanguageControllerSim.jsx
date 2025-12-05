@@ -84,7 +84,7 @@ const BETA = {
   interaction: 0.20   // L × H(Z)_comm interaction
 };
 
-export function LanguageControllerSim({ width, height, isMobile = false }) {
+export function LanguageControllerSim({ width, height, isMobile = false, isFullscreen = false }) {
   const canvasRef = useRef(null);
   const animationRef = useRef(null);
   const [mode, setMode] = useState('comparison'); // 'comparison', 'equation', 'feedback'
@@ -559,7 +559,7 @@ export function LanguageControllerSim({ width, height, isMobile = false }) {
       />
       
       {/* Mode Toggle - Collapsible */}
-      <CollapsiblePanel title="View" position="top-left" defaultOpen={!isMobile}>
+      <CollapsiblePanel title="View" position="top-left" defaultOpen={!isMobile} isFullscreen={isFullscreen}>
         <div className="flex gap-1">
           {[
             { id: 'comparison', label: 'Compare' },
@@ -582,7 +582,7 @@ export function LanguageControllerSim({ width, height, isMobile = false }) {
       </CollapsiblePanel>
       
       {/* Scenario selector - Collapsible */}
-      <CollapsibleControlPanel title="Scenario" position="top-right" defaultOpen={!isMobile} panelWidth="w-48">
+      <CollapsibleControlPanel title="Scenario" position="top-right" defaultOpen={!isMobile} panelWidth="w-48" isFullscreen={isFullscreen}>
         <div className="flex flex-col gap-1 max-h-64 overflow-y-auto">
           {SCENARIOS.map((s, i) => (
             <button
@@ -603,7 +603,7 @@ export function LanguageControllerSim({ width, height, isMobile = false }) {
       </CollapsibleControlPanel>
       
       {/* Key insight - Collapsible */}
-      <CollapsiblePanel title="Key Insight" position="bottom-left" defaultOpen={!isMobile} width="w-56">
+      <CollapsiblePanel title="Key Insight" position="bottom-left" defaultOpen={!isMobile} width="w-56" isFullscreen={isFullscreen}>
         <div className="text-xs text-muted leading-relaxed">
           Fedorenko <span className="text-green-400">measures</span> linguistic surprisal.<br/>
           She <span className="text-orange-400">misses</span> communicative uncertainty—<br/>

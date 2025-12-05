@@ -103,7 +103,7 @@ function updateNetwork(nodes, inputPattern, learningRate = 0.1) {
   return nodes;
 }
 
-export function PredictiveCodingSim({ width, height, isMobile = false }) {
+export function PredictiveCodingSim({ width, height, isMobile = false, isFullscreen = false }) {
   const canvasRef = useRef(null);
   const nodesRef = useRef(null);
   const animationRef = useRef(null);
@@ -278,7 +278,7 @@ export function PredictiveCodingSim({ width, height, isMobile = false }) {
       />
       
       {/* Legend - Collapsible */}
-      <CollapsiblePanel title="SIGNAL FLOW" position="bottom-left" defaultOpen={!isMobile}>
+      <CollapsiblePanel title="SIGNAL FLOW" position="bottom-left" defaultOpen={!isMobile} isFullscreen={isFullscreen}>
         <div className="flex items-center gap-2 mb-1">
           <div className="w-8 h-0.5 bg-yellow-400" />
           <span className="text-text">Predictions (↓)</span>
@@ -290,14 +290,14 @@ export function PredictiveCodingSim({ width, height, isMobile = false }) {
       </CollapsiblePanel>
       
       {/* Controls - Collapsible */}
-      <CollapsibleControlPanel title="INPUT TYPE" position="top-right" defaultOpen={!isMobile}>
+      <CollapsibleControlPanel title="INPUT TYPE" position="top-right" defaultOpen={!isMobile} isFullscreen={isFullscreen}>
         <div className="flex flex-col gap-2">
           <div className="flex gap-2">
             {['sine', 'step', 'random'].map(type => (
               <button
                 key={type}
                 onClick={() => setInputType(type)}
-                className={`px-3 py-1 border rounded text-xs font-mono transition-colors ${
+                className={`${isMobile || isFullscreen ? 'px-3 py-2 text-sm min-h-[44px]' : 'px-3 py-1 text-xs'} border rounded font-mono transition-colors ${
                   inputType === type
                     ? 'bg-glow/20 border-glow text-glow'
                     : 'bg-surface border-border text-muted hover:text-text'
@@ -310,7 +310,7 @@ export function PredictiveCodingSim({ width, height, isMobile = false }) {
           <div className="flex gap-2">
             <button
               onClick={() => setShowPredictions(!showPredictions)}
-              className={`px-2 py-1 border rounded text-xs font-mono transition-colors ${
+              className={`${isMobile || isFullscreen ? 'px-3 py-2 text-sm min-h-[44px]' : 'px-2 py-1 text-xs'} border rounded font-mono transition-colors ${
                 showPredictions ? 'border-yellow-400 text-yellow-400' : 'border-border text-muted'
               }`}
             >
@@ -318,7 +318,7 @@ export function PredictiveCodingSim({ width, height, isMobile = false }) {
             </button>
             <button
               onClick={() => setShowErrors(!showErrors)}
-              className={`px-2 py-1 border rounded text-xs font-mono transition-colors ${
+              className={`${isMobile || isFullscreen ? 'px-3 py-2 text-sm min-h-[44px]' : 'px-2 py-1 text-xs'} border rounded font-mono transition-colors ${
                 showErrors ? 'border-red-400 text-red-400' : 'border-border text-muted'
               }`}
             >
@@ -329,7 +329,7 @@ export function PredictiveCodingSim({ width, height, isMobile = false }) {
       </CollapsibleControlPanel>
       
       {/* Info - Collapsible */}
-      <CollapsiblePanel title="ε_i = x_i - g_i(μ_{'{i+1}'})" position="top-left" defaultOpen={!isMobile}>
+      <CollapsiblePanel title="ε_i = x_i - g_i(μ_{'{i+1}'})" position="top-left" defaultOpen={!isMobile} isFullscreen={isFullscreen}>
         <div className="text-muted">
           Each level predicts the level below. Prediction errors propagate up, 
           updating higher-level beliefs until errors are minimized.

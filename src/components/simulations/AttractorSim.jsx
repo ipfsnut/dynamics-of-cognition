@@ -131,7 +131,7 @@ function findNearestAttractor(attractors, x, y) {
   return nearest;
 }
 
-export function AttractorSim({ width, height, isMobile = false }) {
+export function AttractorSim({ width, height, isMobile = false, isFullscreen = false }) {
   const canvasRef = useRef(null);
   const attractorsRef = useRef(null);
   const landscapeRef = useRef(null);
@@ -342,7 +342,7 @@ export function AttractorSim({ width, height, isMobile = false }) {
       />
       
       {/* Status - Collapsible */}
-      <CollapsiblePanel title="RECALL STATUS" position="bottom-left" defaultOpen={!isMobile}>
+      <CollapsiblePanel title="RECALL STATUS" position="bottom-left" defaultOpen={!isMobile} isFullscreen={isFullscreen}>
         <div className="font-mono text-lg">
           {recalledMemory !== null ? (
             <span style={{ color: ATTRACTOR_COLORS[recalledMemory] }}>
@@ -377,7 +377,7 @@ export function AttractorSim({ width, height, isMobile = false }) {
       </div>
       
       {/* Info - Collapsible */}
-      <CollapsiblePanel title="Memory as Attractors" position="top-left" defaultOpen={!isMobile}>
+      <CollapsiblePanel title="Memory as Attractors" position="top-left" defaultOpen={!isMobile} isFullscreen={isFullscreen}>
         <div className="text-muted">
           Click anywhere to place a recall cue. The system will fall into 
           the nearest memory attractor—partial cues lead to full recall.

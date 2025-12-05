@@ -106,7 +106,7 @@ function getFeelingDescription(feeling) {
   return { text: 'Crisis', color: '#dc2626' };
 }
 
-export function HomeostaticSim({ width, height, isMobile = false }) {
+export function HomeostaticSim({ width, height, isMobile = false, isFullscreen = false }) {
   const canvasRef = useRef(null);
   const stateRef = useRef(null);
   const animationRef = useRef(null);
@@ -316,7 +316,7 @@ export function HomeostaticSim({ width, height, isMobile = false }) {
       />
       
       {/* Feeling Status - Collapsible */}
-      <CollapsiblePanel title="HOMEOSTATIC FEELING" position="bottom-left" defaultOpen={!isMobile} width="w-56">
+      <CollapsiblePanel title="HOMEOSTATIC FEELING" position="bottom-left" defaultOpen={!isMobile} width="w-56" isFullscreen={isFullscreen}>
         <div 
           className="font-mono text-xl font-medium"
           style={{ color: feelingDesc.color }}
@@ -339,7 +339,7 @@ export function HomeostaticSim({ width, height, isMobile = false }) {
       </CollapsiblePanel>
       
       {/* Perturbation Controls - Collapsible */}
-      <CollapsibleControlPanel title="PERTURBATIONS" position="top-right" defaultOpen={!isMobile}>
+      <CollapsibleControlPanel title="PERTURBATIONS" position="top-right" defaultOpen={!isMobile} isFullscreen={isFullscreen}>
         <div className="flex flex-col gap-1">
           {[
             { type: 'fever', label: '🌡️ Fever' },
@@ -351,7 +351,7 @@ export function HomeostaticSim({ width, height, isMobile = false }) {
             <button
               key={p.type}
               onClick={() => applyPerturbation(p.type)}
-              className="px-3 py-1 bg-surface border border-border rounded text-xs font-mono text-muted hover:text-text hover:border-glow transition-colors text-left"
+              className={`${isMobile || isFullscreen ? 'px-3 py-2 text-sm min-h-[44px]' : 'px-3 py-1 text-xs'} bg-surface border border-border rounded font-mono text-muted hover:text-text hover:border-glow transition-colors text-left`}
             >
               {p.label}
             </button>
@@ -360,7 +360,7 @@ export function HomeostaticSim({ width, height, isMobile = false }) {
         <div className="mt-3 pt-2 border-t border-border flex flex-col gap-1">
           <button
             onClick={() => setAutoRegulate(!autoRegulate)}
-            className={`px-3 py-1 border rounded text-xs font-mono transition-colors ${
+            className={`${isMobile || isFullscreen ? 'px-3 py-2 text-sm min-h-[44px]' : 'px-3 py-1 text-xs'} border rounded font-mono transition-colors ${
               autoRegulate
                 ? 'bg-glow/20 border-glow text-glow'
                 : 'bg-red-500/20 border-red-500 text-red-400'
@@ -370,7 +370,7 @@ export function HomeostaticSim({ width, height, isMobile = false }) {
           </button>
           <button
             onClick={handleReset}
-            className="px-3 py-1 bg-surface border border-border rounded text-xs font-mono text-muted hover:text-text transition-colors"
+            className={`${isMobile || isFullscreen ? 'px-3 py-2 text-sm min-h-[44px]' : 'px-3 py-1 text-xs'} bg-surface border border-border rounded font-mono text-muted hover:text-text transition-colors`}
           >
             Reset
           </button>
@@ -378,7 +378,7 @@ export function HomeostaticSim({ width, height, isMobile = false }) {
       </CollapsibleControlPanel>
       
       {/* Info - Collapsible */}
-      <CollapsiblePanel title="Homeostatic Feelings" position="top-left" defaultOpen={!isMobile}>
+      <CollapsiblePanel title="Homeostatic Feelings" position="top-left" defaultOpen={!isMobile} isFullscreen={isFullscreen}>
         <div className="text-muted">
           Feelings emerge from bodily prediction errors. Each gauge shows a 
           homeostatic variable. The central glow reflects aggregate deviation 

@@ -14,7 +14,7 @@ import { CollapsiblePanel, CollapsibleControlPanel } from './CollapsiblePanel';
  * - Shows the metabolic cost of accessing mappings outside H(ω)
  */
 
-export function ControllosphereSim({ width, height, isMobile = false }) {
+export function ControllosphereSim({ width, height, isMobile = false, isFullscreen = false }) {
   const canvasRef = useRef(null);
   const stateRef = useRef(null);
   const animationRef = useRef(null);
@@ -373,7 +373,7 @@ export function ControllosphereSim({ width, height, isMobile = false }) {
       />
       
       {/* Control Signal - Collapsible */}
-      <CollapsibleControlPanel title="DLPFC CONTROL" position="bottom-left" defaultOpen={!isMobile}>
+      <CollapsibleControlPanel title="DLPFC CONTROL" position="bottom-left" defaultOpen={!isMobile} isFullscreen={isFullscreen}>
         <input
           type="range"
           min="0"
@@ -428,7 +428,7 @@ export function ControllosphereSim({ width, height, isMobile = false }) {
       </div>
       
       {/* Info - Collapsible */}
-      <CollapsiblePanel title="Controllosphere & H(ω)" position="top-left" defaultOpen={!isMobile}>
+      <CollapsiblePanel title="Controllosphere & H(ω)" position="top-left" defaultOpen={!isMobile} isFullscreen={isFullscreen}>
         <div className="text-muted text-xs leading-relaxed">
           The configuration ω naturally falls to the <span className="text-glow">intrinsic manifold</span> where 
           mappings in <span className="text-purple-400">H(ω)</span> are accessible. DLPFC pushes into the{' '}

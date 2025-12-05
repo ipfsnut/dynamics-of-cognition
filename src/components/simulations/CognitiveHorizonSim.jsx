@@ -88,7 +88,7 @@ function generateThoughts(count = 24) {
   return thoughts;
 }
 
-export function CognitiveHorizonSim({ width, height, isMobile = false }) {
+export function CognitiveHorizonSim({ width, height, isMobile = false, isFullscreen = false }) {
   const canvasRef = useRef(null);
   const animationRef = useRef(null);
   const timeRef = useRef(0);
@@ -364,7 +364,7 @@ export function CognitiveHorizonSim({ width, height, isMobile = false }) {
       />
       
       {/* Info panel */}
-      <CollapsiblePanel title="Cognitive Horizon" position="top-left" defaultOpen={!isMobile}>
+      <CollapsiblePanel title="Cognitive Horizon" position="top-left" defaultOpen={!isMobile} isFullscreen={isFullscreen}>
         <div className="text-muted">
           The boundary of accessible thought. Your body configuration (ω) determines 
           which thoughts lie within reach. Thoughts at the edge flicker in and out 
@@ -393,7 +393,7 @@ export function CognitiveHorizonSim({ width, height, isMobile = false }) {
       </div>
       
       {/* State description */}
-      <CollapsiblePanel title="H(ω) STATUS" position="bottom-left" defaultOpen={!isMobile} width="w-56">
+      <CollapsiblePanel title="H(ω) STATUS" position="bottom-left" defaultOpen={!isMobile} width="w-56" isFullscreen={isFullscreen}>
         <div className="font-mono">
           <div className="text-2xl" style={{ color: CONFIGURATIONS[config].color }}>
             {accessibleCount}

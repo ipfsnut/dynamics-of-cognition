@@ -213,7 +213,7 @@ function drawAgent(ctx, agent, scale = 1, showInternals = true, depth = 0) {
   }
 }
 
-export function MetaModelingSim({ width, height, isMobile = false }) {
+export function MetaModelingSim({ width, height, isMobile = false, isFullscreen = false }) {
   const canvasRef = useRef(null);
   const agentsRef = useRef(null);
   const animationRef = useRef(null);
@@ -367,7 +367,7 @@ export function MetaModelingSim({ width, height, isMobile = false }) {
       />
       
       {/* Info panel - Collapsible */}
-      <CollapsiblePanel title="Nested Meta-Modeling" position="top-left" defaultOpen={!isMobile}>
+      <CollapsiblePanel title="Nested Meta-Modeling" position="top-left" defaultOpen={!isMobile} isFullscreen={isFullscreen}>
         <div className="text-muted">
           Each agent contains models of other agents (theory of mind) and a model 
           of itself (self-awareness). Click an agent to see its internal model space.
@@ -401,7 +401,7 @@ export function MetaModelingSim({ width, height, isMobile = false }) {
       </div>
       
       {/* Recursion indicator - Collapsible */}
-      <CollapsiblePanel title="MODELING DEPTH" position="bottom-right" defaultOpen={!isMobile}>
+      <CollapsiblePanel title="MODELING DEPTH" position="bottom-right" defaultOpen={!isMobile} isFullscreen={isFullscreen}>
         <div className="flex gap-1">
           {[0, 1, 2].map(level => (
             <div

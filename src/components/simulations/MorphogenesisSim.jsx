@@ -175,7 +175,7 @@ function computePatternError(grid, target, cols, rows) {
   return totalError / (cols * rows);
 }
 
-export function MorphogenesisSim({ width, height, isMobile = false }) {
+export function MorphogenesisSim({ width, height, isMobile = false, isFullscreen = false }) {
   const canvasRef = useRef(null);
   const gridRef = useRef(null);
   const targetRef = useRef(null);
@@ -397,7 +397,7 @@ export function MorphogenesisSim({ width, height, isMobile = false }) {
       />
       
       {/* Error display - Collapsible */}
-      <CollapsiblePanel title="PATTERN ERROR" position="bottom-left" defaultOpen={!isMobile} width="w-48">
+      <CollapsiblePanel title="PATTERN ERROR" position="bottom-left" defaultOpen={!isMobile} width="w-48" isFullscreen={isFullscreen}>
         <div className="flex items-end gap-2">
           <span className="font-mono text-2xl text-glow">
             {(error * 100).toFixed(1)}%
@@ -540,7 +540,7 @@ export function MorphogenesisSim({ width, height, isMobile = false }) {
       </div>
       
       {/* Info - Collapsible */}
-      <CollapsiblePanel title="Bioelectric Morphogenesis" position="top-left" defaultOpen={!isMobile}>
+      <CollapsiblePanel title="Bioelectric Morphogenesis" position="top-left" defaultOpen={!isMobile} isFullscreen={isFullscreen}>
         <div className="text-muted">
           Cells share voltage via gap junctions and collectively compute toward 
           a target pattern. Damaged cells (red) have lost their "memory" — they 

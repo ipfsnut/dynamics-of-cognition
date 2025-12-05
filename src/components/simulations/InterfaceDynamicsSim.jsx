@@ -82,7 +82,7 @@ const MODES = [
   },
 ];
 
-export function InterfaceDynamicsSim({ width, height, isMobile = false }) {
+export function InterfaceDynamicsSim({ width, height, isMobile = false, isFullscreen = false }) {
   const canvasRef = useRef(null);
   const animationRef = useRef(null);
   const [selectedMode, setSelectedMode] = useState(0);

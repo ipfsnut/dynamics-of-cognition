@@ -61,7 +61,7 @@ const SCALES = [
   },
 ];
 
-export function NestedBlanketsSim({ width, height, isMobile = false }) {
+export function NestedBlanketsSim({ width, height, isMobile = false, isFullscreen = false }) {
   const canvasRef = useRef(null);
   const animationRef = useRef(null);
   
@@ -286,7 +286,7 @@ export function NestedBlanketsSim({ width, height, isMobile = false }) {
       />
       
       {/* Scale Controls - Collapsible */}
-      <CollapsibleControlPanel title="SCALE" position="bottom-right" defaultOpen={!isMobile}>
+      <CollapsibleControlPanel title="SCALE" position="bottom-right" defaultOpen={!isMobile} isFullscreen={isFullscreen}>
         <div className="flex gap-2">
           <button
             onClick={() => cycleScale(-1)}
@@ -304,7 +304,7 @@ export function NestedBlanketsSim({ width, height, isMobile = false }) {
       </CollapsibleControlPanel>
       
       {/* Toggle Controls - Collapsible */}
-      <CollapsibleControlPanel title="VIEW" position="top-right" defaultOpen={!isMobile}>
+      <CollapsibleControlPanel title="VIEW" position="top-right" defaultOpen={!isMobile} isFullscreen={isFullscreen}>
         <div className="flex flex-col gap-2">
           <button
             onClick={() => setShowLabels(!showLabels)}
@@ -330,7 +330,7 @@ export function NestedBlanketsSim({ width, height, isMobile = false }) {
       </CollapsibleControlPanel>
       
       {/* Info - Collapsible */}
-      <CollapsiblePanel title="Nested Markov Blankets" position="top-left" defaultOpen={!isMobile}>
+      <CollapsiblePanel title="Nested Markov Blankets" position="top-left" defaultOpen={!isMobile} isFullscreen={isFullscreen}>
         <div className="text-muted">
           The same mathematical structure repeats at every scale—from proteins 
           to societies. Each ring is a blanket: <span className="text-green-400">sensory</span> states 

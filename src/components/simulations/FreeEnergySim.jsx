@@ -92,7 +92,6 @@ export function FreeEnergySim({ width, height, isMobile = false, isFullscreen = 
   const particleRef = useRef(null);
   const animationRef = useRef(null);
   const [isRunning, setIsRunning] = useState(true);
-  const [showComponents, setShowComponents] = useState(false);
   const [particleEnergy, setParticleEnergy] = useState(0);
   
   // Initialize landscape and particle
@@ -258,7 +257,7 @@ export function FreeEnergySim({ width, height, isMobile = false, isFullscreen = 
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [width, height, isRunning, showComponents]);
+  }, [width, height, isRunning]);
   
   // Click to place particle
   const handleClick = useCallback((e) => {
@@ -297,7 +296,7 @@ export function FreeEnergySim({ width, height, isMobile = false, isFullscreen = 
         </div>
         <div className="mt-2 h-2 w-full bg-surface rounded overflow-hidden">
           <div 
-            className="h-full bg-gradient-to-r from-glow to-synapse transition-all"
+            className="h-full bg-gradient-to-r from-glow to-accent transition-all"
             style={{ width: `${(1 - particleEnergy) * 100}%` }}
           />
         </div>

@@ -12,7 +12,7 @@ import { CollapsiblePanel, CollapsibleControlPanel } from './CollapsiblePanel';
  * - Learning: how repeated practice can shift mappings to intrinsic manifold
  */
 
-export function FatigueRecoverySim({ width, height, isMobile = false }) {
+export function FatigueRecoverySim({ width, height, isMobile = false, isFullscreen = false }) {
   const canvasRef = useRef(null);
   const animationRef = useRef(null);
   const stateRef = useRef(null);
@@ -335,7 +335,7 @@ export function FatigueRecoverySim({ width, height, isMobile = false }) {
       />
       
       {/* Mode Controls */}
-      <CollapsibleControlPanel title="ACTIVITY MODE" position="bottom-left" defaultOpen={!isMobile}>
+      <CollapsibleControlPanel title="ACTIVITY MODE" position="bottom-left" defaultOpen={!isMobile} isFullscreen={isFullscreen}>
         <div className="grid grid-cols-2 gap-2">
           <button
             onClick={() => setMode('working')}
@@ -402,7 +402,7 @@ export function FatigueRecoverySim({ width, height, isMobile = false }) {
       </div>
       
       {/* Info */}
-      <CollapsiblePanel title="Fatigue & Recovery" position="top-left" defaultOpen={!isMobile}>
+      <CollapsiblePanel title="Fatigue & Recovery" position="top-left" defaultOpen={!isMobile} isFullscreen={isFullscreen}>
         <div className="text-muted text-xs leading-relaxed">
           <strong className="text-red-400">Work</strong> in the controllosphere accumulates waste and depletes capacity.{' '}
           <strong className="text-teal-400">Rest</strong> allows slow clearance.{' '}

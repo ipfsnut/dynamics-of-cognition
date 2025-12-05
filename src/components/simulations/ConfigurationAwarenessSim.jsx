@@ -167,7 +167,7 @@ class Agent {
   }
 }
 
-export function ConfigurationAwarenessSim({ width, height, isMobile = false }) {
+export function ConfigurationAwarenessSim({ width, height, isMobile = false, isFullscreen = false }) {
   const canvasRef = useRef(null);
   const animationRef = useRef(null);
   const timeRef = useRef(0);
@@ -393,7 +393,7 @@ export function ConfigurationAwarenessSim({ width, height, isMobile = false }) {
       />
       
       {/* Info panel */}
-      <CollapsiblePanel title="Configuration Awareness" position="top-left" defaultOpen={!isMobile} width="w-64">
+      <CollapsiblePanel title="Configuration Awareness" position="top-left" defaultOpen={!isMobile} width="w-64" isFullscreen={isFullscreen}>
         <div className="text-muted text-xs">
           Both agents try to reach the same goal thought. The <span className="text-glow">aware agent</span> can 
           see its own H(ω) boundary and strategically shift to calmer states. The blind agent 

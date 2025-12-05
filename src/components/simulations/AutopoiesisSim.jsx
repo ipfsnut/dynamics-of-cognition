@@ -61,7 +61,7 @@ function initializeSystem(width, height) {
   return { membrane, producers, resources, cx, cy, radius };
 }
 
-export function AutopoiesisSim({ width, height, isMobile = false }) {
+export function AutopoiesisSim({ width, height, isMobile = false, isFullscreen = false }) {
   const canvasRef = useRef(null);
   const systemRef = useRef(null);
   const animationRef = useRef(null);
@@ -405,7 +405,7 @@ export function AutopoiesisSim({ width, height, isMobile = false }) {
       />
       
       {/* Status - Collapsible */}
-      <CollapsibleControlPanel title="MEMBRANE INTEGRITY" position="bottom-left" defaultOpen={!isMobile}>
+      <CollapsibleControlPanel title="MEMBRANE INTEGRITY" position="bottom-left" defaultOpen={!isMobile} isFullscreen={isFullscreen}>
         <div className="w-full h-3 bg-border rounded-full overflow-hidden">
           <div 
             className="h-full transition-all"
@@ -438,7 +438,7 @@ export function AutopoiesisSim({ width, height, isMobile = false }) {
       </CollapsibleControlPanel>
       
       {/* Controls - Collapsible */}
-      <CollapsibleControlPanel title="ACTIONS" position="top-right" defaultOpen={!isMobile}>
+      <CollapsibleControlPanel title="ACTIONS" position="top-right" defaultOpen={!isMobile} isFullscreen={isFullscreen}>
         <div className="flex flex-col gap-2">
           <button
             onClick={handleDamage}
@@ -466,7 +466,7 @@ export function AutopoiesisSim({ width, height, isMobile = false }) {
       </CollapsibleControlPanel>
       
       {/* Info - Collapsible */}
-      <CollapsiblePanel title="Autopoiesis" position="top-left" defaultOpen={!isMobile}>
+      <CollapsiblePanel title="Autopoiesis" position="top-left" defaultOpen={!isMobile} isFullscreen={isFullscreen}>
         <div className="text-muted">
           The membrane enables processes that produce membrane components. 
           <span className="text-synapse"> Purple producers</span> consume 
