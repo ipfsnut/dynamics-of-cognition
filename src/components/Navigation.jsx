@@ -59,9 +59,14 @@ export function Navigation({ currentSection, onNavigate, onReadPaper }) {
             <h1 className="font-display text-lg text-text leading-tight">
               Dynamics of Cognition
             </h1>
-            <p className="text-xs text-muted mt-1 font-mono">
-              v0.1 · Working Draft
-            </p>
+            <div className="flex items-center gap-2 mt-1">
+              <span className="text-xs text-muted font-mono">
+                v0.1 · Working Draft
+              </span>
+              <span className="text-xs px-2 py-0.5 bg-glow/20 text-glow rounded-full font-mono">
+                BETA
+              </span>
+            </div>
           </div>
 
           {/* Section links */}

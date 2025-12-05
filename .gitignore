@@ -33,3 +33,4 @@ npm-debug.log*
 # public/h-omega-synthesis.md
 # public/thermodynamic-grounding.md
 # public/configuration-dynamics.md
+/temp/

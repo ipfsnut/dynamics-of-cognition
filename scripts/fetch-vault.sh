@@ -169,8 +169,12 @@ if [ -f "$VAULT_SOURCE/meta/bibliography.md" ]; then
   echo "  Adding: bibliography.md"
   echo "## References" >> "$TEMP_PAPER"
   echo "" >> "$TEMP_PAPER"
-  # Skip the title and section headers, just get the references
-  grep -E "^[A-Z]" "$VAULT_SOURCE/meta/bibliography.md" >> "$TEMP_PAPER" || true
+  # Get references (skip any header lines), add blank line between each
+  # APA style: alphabetical, no numbers, hanging indent handled by CSS
+  grep -E "^[A-Z]" "$VAULT_SOURCE/meta/bibliography.md" | grep -v "^References for" | while IFS= read -r line; do
+    echo "$line" >> "$TEMP_PAPER"
+    echo "" >> "$TEMP_PAPER"
+  done
 fi
 
 # Strip wiki-links: [[target|display]] -> display, [[target]] -> target

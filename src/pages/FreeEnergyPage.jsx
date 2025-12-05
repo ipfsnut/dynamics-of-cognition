@@ -155,3 +155,4 @@ export function FreeEnergyPage({ section, prevSection, nextSection, onNavigate }
   );
 }
 
+

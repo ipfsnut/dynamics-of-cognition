@@ -18,7 +18,10 @@ export function SimulationCanvas({
   const [dimensions, setDimensions] = useState({ width: 600, height: 375 });
   const [isMobile, setIsMobile] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [fullscreenDimensions, setFullscreenDimensions] = useState({ width: 0, height: 0 });
+  const [fullscreenDimensions, setFullscreenDimensions] = useState({ 
+    width: typeof window !== 'undefined' ? window.innerWidth : 800, 
+    height: typeof window !== 'undefined' ? window.innerHeight : 600 
+  });
 
   // Check if device is mobile/tablet
   useEffect(() => {
@@ -95,6 +98,15 @@ export function SimulationCanvas({
 
   // Enter fullscreen mode
   const enterFullscreen = useCallback(() => {
+    // Calculate dimensions immediately
+    const safeAreaTop = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--sat') || '0');
+    const safeAreaBottom = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--sab') || '0');
+    
+    setFullscreenDimensions({
+      width: window.innerWidth,
+      height: window.innerHeight - safeAreaTop - safeAreaBottom,
+    });
+    
     setIsFullscreen(true);
     
     // Try to use native fullscreen API if available (for better experience)
@@ -160,12 +172,18 @@ export function SimulationCanvas({
         
         {/* Fullscreen simulation */}
         <div className="flex-1 relative overflow-hidden">
-          {children({
-            width: fullscreenDimensions.width,
-            height: fullscreenDimensions.height - 80, // Account for header
-            isMobile,
-            isFullscreen: true,
-          })}
+          {fullscreenDimensions.width > 0 && fullscreenDimensions.height > 80 ? (
+            children({
+              width: fullscreenDimensions.width,
+              height: fullscreenDimensions.height - 80, // Account for header
+              isMobile,
+              isFullscreen: true,
+            })
+          ) : (
+            <div className="flex items-center justify-center h-full">
+              <div className="text-muted">Loading...</div>
+            </div>
+          )}
         </div>
       </div>
     );

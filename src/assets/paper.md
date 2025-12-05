@@ -579,49 +579,93 @@ The convergence of mathematical physics, developmental biology, neuroscience, an
 
 ## References
 
-References for the Dynamics of Cognition project.
-Friston, K. (2010). The free-energy principle: a unified brain theory? *Nature Reviews Neuroscience*, 11(2), 127-138.
-Friston, K. (2013). Life as we know it. *Journal of the Royal Society Interface*, 10(86), 20130475.
-Friston, K., et al. (2023). The free energy principle made simpler but not too simple. *Physics Reports*, 1024, 1-29.
-Friston, K., Levin, M., Sengupta, B., & Pezzulo, G. (2015). Knowing one's place: a free-energy approach to pattern regulation. *Journal of the Royal Society Interface*, 12(105), 20141383.
-Kirchhoff, M., Parr, T., Palacios, E., Friston, K., & Kiverstein, J. (2018). The Markov blankets of life: autonomy, active inference and the free energy principle. *Journal of the Royal Society Interface*, 15(138), 20170792.
-Palacios, E., Razi, A., Parr, T., Kirchhoff, M., & Friston, K. (2020). On Markov blankets and hierarchical self-organisation. *Journal of Theoretical Biology*, 486, 110089.
-Bruineberg, J., Dołęga, K., Dewhurst, J., & Baltieri, M. (2022). The Emperor's New Markov Blankets. *Behavioral and Brain Sciences*, 45, e183.
-Levin, M. (2021). Bioelectric Signaling: Reprogrammable Circuits Underlying Embryogenesis, Regeneration, and Cancer. *Cell*, 184(8), 1971-1989.
-Levin, M., & Dennett, D. C. (2020). Cognition All the Way Down. *Aeon Essays*.
-Durant, F., et al. (2017). Long-Term, Stochastic Editing of Regenerative Anatomy via Targeting Endogenous Bioelectric Gradients. *Biophysical Journal*, 112(10), 2231-2243.
-Murugan, N. J., et al. (2022). Acute Multidrug Delivery via a Wearable Bioreactor Facilitates Long-Term Limb Regeneration and Functional Recovery in Adult Xenopus laevis. *Science Advances*, 8(4), eabj2164.
-Vandenberg, L. N., Adams, D. S., & Levin, M. (2012). Normalized Shape and Location of Perturbed Craniofacial Structures in the Xenopus Tadpole Reveal an Innate Ability to Achieve Correct Morphology. *Developmental Dynamics*, 241(5), 863-878.
-Ciaunica, A., Levin, M., Rosas, F., & Friston, K. (2023). Nested Selves: Self-Organization and Shared Markov Blankets in Prenatal Development in Humans. *Topics in Cognitive Science*.
-Damasio, A. (1994). *Descartes' Error: Emotion, Reason, and the Human Brain*. Putnam.
-Damasio, A. (1996). The somatic marker hypothesis and the possible functions of the prefrontal cortex. *Philosophical Transactions of the Royal Society B*, 351(1346), 1413-1420.
-Damasio, A. (2021). *Feeling & Knowing: Making Minds Conscious*. Pantheon Books.
-Damasio, A., & Damasio, H. (2022). Homeostatic feelings and the biology of consciousness. *Brain*, 145(7), 2231-2235.
-Damasio, A., & Damasio, H. (2024). Sensing, feeling and consciousness. *Philosophical Transactions of the Royal Society B*, 379(1908), 20230243.
-Barrett, L. F., Quigley, K. S., & Hamilton, P. (2016). An active inference theory of allostasis and interoception in depression. *Philosophical Transactions of the Royal Society B*, 371, 20160011.
-Maturana, H. R., & Varela, F. J. (1980). *Autopoiesis and Cognition: The Realization of the Living*. D. Reidel Publishing.
-Varela, F. J., Thompson, E., & Rosch, E. (1991). *The Embodied Mind: Cognitive Science and Human Experience*. MIT Press.
-Thompson, E. (2007). *Mind in Life: Biology, Phenomenology, and the Sciences of Mind*. Harvard University Press.
-Noë, A. (2004). *Action in Perception*. MIT Press.
-Chemero, A. (2009). *Radical Embodied Cognitive Science*. MIT Press.
-Gibson, J. J. (1979). *The Ecological Approach to Visual Perception*. Houghton Mifflin.
-Fedorenko, E., Behr, M. K., & Kanwisher, N. (2011). Functional specificity for high-level linguistic processing in the human brain. *PNAS*, 108(39), 16428-16433.
-Fedorenko, E., Ivanova, A. A., & Regev, T. I. (2024). The language network as a natural kind within the broader landscape of the human brain. *Nature Reviews Neuroscience*, 25(5), 289-312.
-Fedorenko, E., Piantadosi, S. T., & Gibson, E. A. F. (2024). Language is primarily a tool for communication rather than thought. *Nature*, 630(8017), 575-586.
-Paunov, A. M., Blank, I. A., & Fedorenko, E. (2019). Functionally distinct language and Theory of Mind networks are synchronized at rest and during language comprehension. *Journal of Neurophysiology*, 121(4), 1244-1265.
-Shain, C., Blank, I. A., van Schijndel, M., Schuler, W., & Fedorenko, E. (2020). fMRI reveals language-specific predictive coding during naturalistic sentence comprehension. *Neuropsychologia*, 138, 107307.
-Tuckute, G., et al. (2024). Driving and suppressing the human language network using large language models. *Nature Human Behaviour*, 8(3), 544-561.
+Friston, K. (2010). The free-energy principle: a unified brain theory? *Nature Reviews Neuroscience*, 11(2), 127-138. https://doi.org/10.1038/nrn2787
+
+Friston, K. (2013). Life as we know it. *Journal of the Royal Society Interface*, 10(86), 20130475. https://doi.org/10.1098/rsif.2013.0475
+
+Friston, K., et al. (2023). The free energy principle made simpler but not too simple. *Physics Reports*, 1024, 1-29. https://doi.org/10.1016/j.physrep.2023.07.001
+
+Friston, K., Levin, M., Sengupta, B., & Pezzulo, G. (2015). Knowing one's place: a free-energy approach to pattern regulation. *Journal of the Royal Society Interface*, 12(105), 20141383. https://doi.org/10.1098/rsif.2014.1383
+
+Kirchhoff, M., Parr, T., Palacios, E., Friston, K., & Kiverstein, J. (2018). The Markov blankets of life: autonomy, active inference and the free energy principle. *Journal of the Royal Society Interface*, 15(138), 20170792. https://doi.org/10.1098/rsif.2017.0792
+
+Palacios, E., Razi, A., Parr, T., Kirchhoff, M., & Friston, K. (2020). On Markov blankets and hierarchical self-organisation. *Journal of Theoretical Biology*, 486, 110089. https://doi.org/10.1016/j.jtbi.2019.110089
+
+Bruineberg, J., Dołęga, K., Dewhurst, J., & Baltieri, M. (2022). The Emperor's New Markov Blankets. *Behavioral and Brain Sciences*, 45, e183. https://doi.org/10.1017/S0140525X21002351
+
+Levin, M. (2021). Bioelectric Signaling: Reprogrammable Circuits Underlying Embryogenesis, Regeneration, and Cancer. *Cell*, 184(8), 1971-1989. https://doi.org/10.1016/j.cell.2021.02.034
+
+Levin, M., & Dennett, D. C. (2020). Cognition All the Way Down. *Aeon Essays*. https://aeon.co/essays/how-to-understand-cells-tissues-and-organisms-as-agents-with-agendas
+
+Durant, F., et al. (2017). Long-Term, Stochastic Editing of Regenerative Anatomy via Targeting Endogenous Bioelectric Gradients. *Biophysical Journal*, 112(10), 2231-2243. https://doi.org/10.1016/j.bpj.2017.04.011
+
+Murugan, N. J., et al. (2022). Acute Multidrug Delivery via a Wearable Bioreactor Facilitates Long-Term Limb Regeneration and Functional Recovery in Adult Xenopus laevis. *Science Advances*, 8(4), eabj2164. https://doi.org/10.1126/sciadv.abj2164
+
+Vandenberg, L. N., Adams, D. S., & Levin, M. (2012). Normalized Shape and Location of Perturbed Craniofacial Structures in the Xenopus Tadpole Reveal an Innate Ability to Achieve Correct Morphology. *Developmental Dynamics*, 241(5), 863-878. https://doi.org/10.1002/dvdy.23770
+
+Ciaunica, A., Levin, M., Rosas, F., & Friston, K. (2023). Nested Selves: Self-Organization and Shared Markov Blankets in Prenatal Development in Humans. *Topics in Cognitive Science*. https://doi.org/10.1111/tops.12717
+
+Damasio, A. (1994). *Descartes' Error: Emotion, Reason, and the Human Brain*. Putnam. ISBN: 978-0-380-72647-5
+
+Damasio, A. (1996). The somatic marker hypothesis and the possible functions of the prefrontal cortex. *Philosophical Transactions of the Royal Society B*, 351(1346), 1413-1420. https://doi.org/10.1098/rstb.1996.0125
+
+Damasio, A. (2021). *Feeling & Knowing: Making Minds Conscious*. Pantheon Books. ISBN: 978-0-375-42316-8
+
+Damasio, A., & Damasio, H. (2022). Homeostatic feelings and the biology of consciousness. *Brain*, 145(7), 2231-2235. https://doi.org/10.1093/brain/awac194
+
+Damasio, A., & Damasio, H. (2024). Sensing, feeling and consciousness. *Philosophical Transactions of the Royal Society B*, 379(1908), 20230243. https://doi.org/10.1098/rstb.2023.0243
+
+Barrett, L. F., Quigley, K. S., & Hamilton, P. (2016). An active inference theory of allostasis and interoception in depression. *Philosophical Transactions of the Royal Society B*, 371, 20160011. https://doi.org/10.1098/rstb.2016.0011
+
+Maturana, H. R., & Varela, F. J. (1980). *Autopoiesis and Cognition: The Realization of the Living*. D. Reidel Publishing. ISBN: 978-90-277-1015-8
+
+Varela, F. J., Thompson, E., & Rosch, E. (1991). *The Embodied Mind: Cognitive Science and Human Experience*. MIT Press. ISBN: 978-0-262-72021-2
+
+Thompson, E. (2007). *Mind in Life: Biology, Phenomenology, and the Sciences of Mind*. Harvard University Press. ISBN: 978-0-674-02511-0
+
+Noë, A. (2004). *Action in Perception*. MIT Press. ISBN: 978-0-262-64047-3
+
+Chemero, A. (2009). *Radical Embodied Cognitive Science*. MIT Press. ISBN: 978-0-262-51358-4
+
+Gibson, J. J. (1979). *The Ecological Approach to Visual Perception*. Houghton Mifflin. ISBN: 978-0-89859-959-6
+
+Fedorenko, E., Behr, M. K., & Kanwisher, N. (2011). Functional specificity for high-level linguistic processing in the human brain. *PNAS*, 108(39), 16428-16433. https://doi.org/10.1073/pnas.1112937108
+
+Fedorenko, E., Ivanova, A. A., & Regev, T. I. (2024). The language network as a natural kind within the broader landscape of the human brain. *Nature Reviews Neuroscience*, 25(5), 289-312. https://doi.org/10.1038/s41583-024-00802-4
+
+Fedorenko, E., Piantadosi, S. T., & Gibson, E. A. F. (2024). Language is primarily a tool for communication rather than thought. *Nature*, 630(8017), 575-586. https://doi.org/10.1038/s41586-024-07522-w
+
+Paunov, A. M., Blank, I. A., & Fedorenko, E. (2019). Functionally distinct language and Theory of Mind networks are synchronized at rest and during language comprehension. *Journal of Neurophysiology*, 121(4), 1244-1265. https://doi.org/10.1152/jn.00619.2018
+
+Shain, C., Blank, I. A., van Schijndel, M., Schuler, W., & Fedorenko, E. (2020). fMRI reveals language-specific predictive coding during naturalistic sentence comprehension. *Neuropsychologia*, 138, 107307. https://doi.org/10.1016/j.neuropsychologia.2019.107307
+
+Tuckute, G., et al. (2024). Driving and suppressing the human language network using large language models. *Nature Human Behaviour*, 8(3), 544-561. https://doi.org/10.1038/s41562-023-01783-7
+
 Holroyd, C. B. (2024). The controllosphere: The neural origin of cognitive effort. *Psychological Review*.
-Van Gelder, T. (1995). What might cognition be, if not computation? *Journal of Philosophy*, 92(7), 345-381.
-Kelso, J. A. S. (1995). *Dynamic Patterns: The Self-Organization of Brain and Behavior*. MIT Press.
-Tognoli, E., & Kelso, J. A. S. (2014). The metastable brain. *Neuron*, 81(1), 35-48.
-Thelen, E., & Smith, L. B. (1994). *A Dynamic Systems Approach to the Development of Cognition and Action*. MIT Press.
-Kirkpatrick, S., Gelatt, C. D., & Vecchi, M. P. (1983). Optimization by simulated annealing. *Science*, 220(4598), 671-680.
-Ogden, P., Minton, K., & Pain, C. (2006). *Trauma and the Body: A Sensorimotor Approach to Psychotherapy*. Norton.
-Payne, P., Levine, P. A., & Crane-Godreau, M. A. (2015). Somatic experiencing: using interoception and proprioception as core elements of trauma therapy. *Frontiers in Psychology*, 6, 93.
-Porges, S. W. (2009). The polyvagal theory: New insights into adaptive reactions of the autonomic nervous system. *Cleveland Clinic Journal of Medicine*, 76(Suppl 2), S86-90.
-Levy, W. B., & Calvert, V. G. (2021). Communication consumes 35 times more energy than computation in the human cortex. *PNAS*, 118(18), e2008173118.
-Parr, T., Da Costa, L., & Friston, K. (2020). Markov blankets, information geometry and stochastic thermodynamics. *Philosophical Transactions of the Royal Society A*, 378, 20190159.
-Schnall, S., Zadra, J. R., & Proffitt, D. R. (2010). Direct evidence for the economy of action: Glucose and the perception of geographical slant. *Perception*, 39, 464-482.
-Still, S., Sivak, D. A., Bell, A. J., & Crooks, G. E. (2012). Thermodynamics of prediction. *Physical Review Letters*, 109, 120604.
-Carhart-Harris, R. L., & Friston, K. J. (2019). REBUS and the anarchic brain: Toward a unified model of the brain action of psychedelics. *Pharmacological Reviews*, 71(3), 316-344.
+
+Van Gelder, T. (1995). What might cognition be, if not computation? *Journal of Philosophy*, 92(7), 345-381. https://doi.org/10.2307/2940961
+
+Kelso, J. A. S. (1995). *Dynamic Patterns: The Self-Organization of Brain and Behavior*. MIT Press. ISBN: 978-0-262-61131-2
+
+Tognoli, E., & Kelso, J. A. S. (2014). The metastable brain. *Neuron*, 81(1), 35-48. https://doi.org/10.1016/j.neuron.2013.12.022
+
+Thelen, E., & Smith, L. B. (1994). *A Dynamic Systems Approach to the Development of Cognition and Action*. MIT Press. ISBN: 978-0-262-70059-5
+
+Kirkpatrick, S., Gelatt, C. D., & Vecchi, M. P. (1983). Optimization by simulated annealing. *Science*, 220(4598), 671-680. https://doi.org/10.1126/science.220.4598.671
+
+Ogden, P., Minton, K., & Pain, C. (2006). *Trauma and the Body: A Sensorimotor Approach to Psychotherapy*. Norton. ISBN: 978-0-393-70457-0
+
+Payne, P., Levine, P. A., & Crane-Godreau, M. A. (2015). Somatic experiencing: using interoception and proprioception as core elements of trauma therapy. *Frontiers in Psychology*, 6, 93. https://doi.org/10.3389/fpsyg.2015.00093
+
+Porges, S. W. (2009). The polyvagal theory: New insights into adaptive reactions of the autonomic nervous system. *Cleveland Clinic Journal of Medicine*, 76(Suppl 2), S86-90. https://doi.org/10.3949/ccjm.76.s2.17
+
+Levy, W. B., & Calvert, V. G. (2021). Communication consumes 35 times more energy than computation in the human cortex. *PNAS*, 118(18), e2008173118. https://doi.org/10.1073/pnas.2008173118
+
+Parr, T., Da Costa, L., & Friston, K. (2020). Markov blankets, information geometry and stochastic thermodynamics. *Philosophical Transactions of the Royal Society A*, 378, 20190159. https://doi.org/10.1098/rsta.2019.0159
+
+Schnall, S., Zadra, J. R., & Proffitt, D. R. (2010). Direct evidence for the economy of action: Glucose and the perception of geographical slant. *Perception*, 39, 464-482. https://doi.org/10.1068/p6445
+
+Still, S., Sivak, D. A., Bell, A. J., & Crooks, G. E. (2012). Thermodynamics of prediction. *Physical Review Letters*, 109, 120604. https://doi.org/10.1103/PhysRevLett.109.120604
+
+Carhart-Harris, R. L., & Friston, K. J. (2019). REBUS and the anarchic brain: Toward a unified model of the brain action of psychedelics. *Pharmacological Reviews*, 71(3), 316-344. https://doi.org/10.1124/pr.118.017160
+

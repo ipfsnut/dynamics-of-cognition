@@ -163,12 +163,15 @@ export function FreeEnergySim({ width, height, isMobile = false, isFullscreen = 
         for (let col = 0; col < cols; col++) {
           const energy = landscape[row][col];
           
-          // Map energy to color
-          // Low energy = glow color (teal), high energy = dark
-          const intensity = 1 - energy;
-          const r = Math.floor(intensity * 45);
-          const g = Math.floor(intensity * 212 * 0.7 + 20);
-          const b = Math.floor(intensity * 191 * 0.7 + 20);
+          // Map energy to color with better contrast
+          // Low energy = bright teal, high energy = darker but still visible
+          const normalizedEnergy = Math.max(0, Math.min(1, energy));
+          const intensity = 1 - normalizedEnergy;
+          
+          // Enhanced contrast mapping
+          const r = Math.floor(intensity * 60 + 30);
+          const g = Math.floor(intensity * 150 + 80);
+          const b = Math.floor(intensity * 130 + 70);
           
           // Fill resolution x resolution block
           for (let py = 0; py < resolution && row * resolution + py < height; py++) {

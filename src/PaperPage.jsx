@@ -6,7 +6,7 @@ import paperContent from './assets/paper.md?raw';
  * PaperPage - Pure academic paper view
  * Renders paper.md without any simulations
  */
-export function PaperPage({ onBack }) {
+export function PaperPage({ onLaunchBeta }) {
   const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
@@ -35,23 +35,27 @@ export function PaperPage({ onBack }) {
       </div>
 
       {/* Header */}
-      <header className="sticky top-0 z-40 bg-void/95 backdrop-blur border-b border-border">
+      <header className="sticky top-0 z-50 bg-void/95 backdrop-blur border-b border-border">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
-          <button
-            onClick={onBack}
-            className="flex items-center gap-2 text-muted hover:text-text transition-colors"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 19l-7-7 7-7" />
-            </svg>
-            <span className="text-sm">Back to Explorer</span>
-          </button>
-          
           <div className="flex items-center gap-3">
+            <span className="text-sm text-text font-display">Dynamics of Cognition</span>
             <span className="text-xs text-muted font-mono">
               Working Draft · v0.1
             </span>
           </div>
+          
+          {onLaunchBeta && (
+            <button
+              onClick={onLaunchBeta}
+              className="flex items-center gap-2 px-3 py-1.5 bg-glow/10 hover:bg-glow/20 text-glow border border-glow/30 rounded-lg transition-colors text-sm"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
+                  d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+              <span>Launch Interactive Beta</span>
+            </button>
+          )}
         </div>
       </header>
 
@@ -64,19 +68,22 @@ export function PaperPage({ onBack }) {
         {/* Footer */}
         <footer className="mt-16 pt-8 border-t border-border">
           <div className="flex items-center justify-between">
-            <button
-              onClick={onBack}
-              className="btn btn-ghost"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 19l-7-7 7-7" />
-              </svg>
-              Back to Explorer
-            </button>
+            {onLaunchBeta && (
+              <button
+                onClick={onLaunchBeta}
+                className="btn btn-ghost"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
+                    d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                Interactive Beta
+              </button>
+            )}
             
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="btn btn-ghost"
+              className={`btn btn-ghost ${!onLaunchBeta ? 'ml-auto' : ''}`}
             >
               Back to top
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

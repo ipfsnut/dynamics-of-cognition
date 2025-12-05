@@ -3,21 +3,22 @@ import { Explorer } from './Explorer';
 import { PaperPage } from './PaperPage';
 import { DocPage } from './DocPage';
 import { ConfidentialBanner } from './components/ConfidentialBanner';
-import { SECTIONS, getSectionBySlug, getSectionById } from './data/sections';
+import { SECTIONS, getSectionBySlug } from './data/sections';
 
 // Import theory documents
 import hOmegaContent from '../public/h-omega-synthesis.md?raw';
 import configDynamicsContent from '../public/configuration-dynamics.md?raw';
 
 /**
- * App - Main application with hash-based routing
+ * App - Main application showing theoretical paper
  * 
  * Routes:
- *   #/paper - Full academic paper view
  *   #/doc/h-omega-synthesis - H(ω) formal synthesis
  *   #/doc/configuration-dynamics - Configuration dynamics working doc
- *   #/explore/:sectionSlug - Individual section pages
- *   (default) - Section navigation
+ *   (default) - Full academic paper view
+ * 
+ * Note: Interactive section navigation temporarily disabled
+ * until full interactive experience can be properly developed
  */
 export default function App() {
   const [route, setRoute] = useState(() => parseHash(window.location.hash));
@@ -40,23 +41,15 @@ export default function App() {
   // Determine which content to render
   let content;
   
-  // Route: Paper view
-  if (route.view === 'paper') {
-    content = (
-      <PaperPage 
-        onBack={() => navigate('/explore/introduction')} 
-      />
-    );
-  }
   // Route: H(ω) Synthesis doc
-  else if (route.view === 'doc' && route.docSlug === 'h-omega-synthesis') {
+  if (route.view === 'doc' && route.docSlug === 'h-omega-synthesis') {
     content = (
       <DocPage
         content={hOmegaContent}
         title="H(ω): The Configuration Constraint"
         version="Working Draft"
-        onBack={() => navigate('/explore/configuration')}
-        backLabel="Back to Configuration"
+        onBack={() => navigate('/')}
+        backLabel="Back to Paper"
       />
     );
   }
@@ -67,13 +60,13 @@ export default function App() {
         content={configDynamicsContent}
         title="Configuration Dynamics"
         version="Working Draft"
-        onBack={() => navigate('/explore/configuration')}
-        backLabel="Back to Configuration"
+        onBack={() => navigate('/')}
+        backLabel="Back to Paper"
       />
     );
   }
-  // Route: Explorer (section pages)
-  else {
+  // Route: Interactive Beta (Explorer)
+  else if (route.view === 'explore') {
     const currentSection = route.sectionSlug 
       ? getSectionBySlug(route.sectionSlug) 
       : SECTIONS[0];
@@ -82,7 +75,16 @@ export default function App() {
       <Explorer 
         currentSection={currentSection || SECTIONS[0]}
         onNavigate={(section) => navigate(`/explore/${section.slug}`)}
-        onReadPaper={() => navigate('/paper')}
+        onReadPaper={() => navigate('/')}
+      />
+    );
+  }
+  // Default: Paper view
+  else {
+    content = (
+      <PaperPage 
+        onBack={null} // No back button needed
+        onLaunchBeta={() => navigate('/explore/introduction')}
       />
     );
   }
@@ -103,10 +105,6 @@ export default function App() {
 function parseHash(hash) {
   const path = hash.replace(/^#\/?/, '');
   
-  if (path === 'paper') {
-    return { view: 'paper' };
-  }
-  
   if (path.startsWith('doc/')) {
     const docSlug = path.replace('doc/', '');
     return { view: 'doc', docSlug };
@@ -117,6 +115,6 @@ function parseHash(hash) {
     return { view: 'explore', sectionSlug };
   }
   
-  // Default to first section
-  return { view: 'explore', sectionSlug: 'introduction' };
+  // Default to paper view
+  return { view: 'paper' };
 }
