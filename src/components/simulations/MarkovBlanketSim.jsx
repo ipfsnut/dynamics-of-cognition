@@ -347,7 +347,7 @@ function applyCustomForces(bodies, cx, cy, blanketRadius, flowEnabled, perturbat
   }
 }
 
-export function MarkovBlanketSim({ width, height, isMobile = false }) {
+export function MarkovBlanketSim({ width, height, isMobile = false, isFullscreen = false }) {
   const canvasRef = useRef(null);
   const worldRef = useRef(null);
   const animationRef = useRef(null);
@@ -614,7 +614,7 @@ export function MarkovBlanketSim({ width, height, isMobile = false }) {
       />
       
       {/* Legend - Collapsible */}
-      <CollapsiblePanel title="STATE TYPES" position="bottom-left" defaultOpen={!isMobile}>
+      <CollapsiblePanel title="STATE TYPES" position="bottom-left" defaultOpen={!isMobile} isFullscreen={isFullscreen}>
         {Object.entries(TYPES).map(([type, info]) => (
           <div
             key={type}
@@ -645,16 +645,16 @@ export function MarkovBlanketSim({ width, height, isMobile = false }) {
       </CollapsiblePanel>
       
       {/* Controls */}
-      <div className={`absolute ${isMobile ? 'top-2 right-2' : 'top-4 right-4'} flex gap-1.5 sm:gap-2`}>
+      <div className={`absolute ${isFullscreen ? 'top-16 right-4' : isMobile ? 'top-2 right-2' : 'top-4 right-4'} flex gap-1.5 sm:gap-2`}>
         <button
           onClick={handleReset}
-          className="px-2 sm:px-3 py-1 bg-surface border border-border rounded text-[10px] sm:text-xs font-mono text-muted hover:text-text transition-colors"
+          className={`${isMobile || isFullscreen ? 'px-3 py-2 text-sm min-h-[44px]' : 'px-2 sm:px-3 py-1 text-[10px] sm:text-xs'} bg-surface border border-border rounded font-mono text-muted hover:text-text transition-colors`}
         >
           Reset
         </button>
         <button
           onClick={() => setFlowEnabled(f => !f)}
-          className={`px-2 sm:px-3 py-1 border rounded text-[10px] sm:text-xs font-mono transition-colors ${
+          className={`${isMobile || isFullscreen ? 'px-3 py-2 text-sm min-h-[44px]' : 'px-2 sm:px-3 py-1 text-[10px] sm:text-xs'} border rounded font-mono transition-colors ${
             flowEnabled 
               ? 'bg-glow/20 border-glow text-glow' 
               : 'bg-surface border-border text-muted hover:text-text'
@@ -665,7 +665,7 @@ export function MarkovBlanketSim({ width, height, isMobile = false }) {
       </div>
       
       {/* Info - Collapsible */}
-      <CollapsiblePanel title="μ ⊥⊥ ψ | b" position="top-left" defaultOpen={!isMobile}>
+      <CollapsiblePanel title="μ ⊥⊥ ψ | b" position="top-left" defaultOpen={!isMobile} isFullscreen={isFullscreen}>
         <div className="text-muted">
           The blanket is a physical membrane. Click anywhere to perturb the system 
           and watch information flow through sensory and active states.

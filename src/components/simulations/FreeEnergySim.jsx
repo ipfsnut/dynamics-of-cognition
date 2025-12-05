@@ -86,7 +86,7 @@ function createParticle(x, y) {
   };
 }
 
-export function FreeEnergySim({ width, height, isMobile = false }) {
+export function FreeEnergySim({ width, height, isMobile = false, isFullscreen = false }) {
   const canvasRef = useRef(null);
   const landscapeRef = useRef(null);
   const particleRef = useRef(null);
@@ -286,7 +286,7 @@ export function FreeEnergySim({ width, height, isMobile = false }) {
       />
       
       {/* Energy display - Collapsible */}
-      <CollapsiblePanel title="FREE ENERGY F" position="bottom-left" defaultOpen={!isMobile} width="w-44">
+      <CollapsiblePanel title="FREE ENERGY F" position="bottom-left" defaultOpen={!isMobile} width="w-44" isFullscreen={isFullscreen}>
         <div className="flex items-end gap-2">
           <span className="font-mono text-2xl text-glow">
             {particleEnergy.toFixed(3)}
@@ -304,10 +304,10 @@ export function FreeEnergySim({ width, height, isMobile = false }) {
       </CollapsiblePanel>
       
       {/* Controls */}
-      <div className="absolute top-4 right-4 flex gap-2">
+      <div className={`absolute ${isFullscreen ? 'top-16 right-4' : 'top-4 right-4'} flex gap-2`}>
         <button
           onClick={() => setIsRunning(!isRunning)}
-          className={`px-3 py-1 border rounded text-xs font-mono transition-colors ${
+          className={`${isMobile || isFullscreen ? 'px-3 py-2 text-sm min-h-[44px]' : 'px-3 py-1 text-xs'} border rounded font-mono transition-colors ${
             isRunning 
               ? 'bg-glow/20 border-glow text-glow' 
               : 'bg-surface border-border text-muted hover:text-text'
@@ -317,14 +317,14 @@ export function FreeEnergySim({ width, height, isMobile = false }) {
         </button>
         <button
           onClick={handleReset}
-          className="px-3 py-1 bg-surface border border-border rounded text-xs font-mono text-muted hover:text-text transition-colors"
+          className={`${isMobile || isFullscreen ? 'px-3 py-2 text-sm min-h-[44px]' : 'px-3 py-1 text-xs'} bg-surface border border-border rounded font-mono text-muted hover:text-text transition-colors`}
         >
           Reset
         </button>
       </div>
       
       {/* Instructions - Collapsible */}
-      <CollapsiblePanel title="F = D_KL + Surprisal" position="top-left" defaultOpen={!isMobile}>
+      <CollapsiblePanel title="F = D_KL + Surprisal" position="top-left" defaultOpen={!isMobile} isFullscreen={isFullscreen}>
         <div className="text-muted">
           Click anywhere to place the system. It will minimize free energy by descending toward attractors (expected states).
         </div>

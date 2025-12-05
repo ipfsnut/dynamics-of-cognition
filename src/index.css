@@ -414,6 +414,71 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ========================================
+   MOBILE OPTIMIZATIONS
+   ======================================== */
+
+/* Fullscreen simulation overlay */
+.simulation-fullscreen {
+  /* Prevent touch behaviors that interfere with interactions */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+/* Mobile touch targets - minimum 44px */
+@media (max-width: 767px), (hover: none) {
+  .btn {
+    min-height: 44px;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+  }
+  
+  .nav-link {
+    min-height: 44px;
+    padding: 0.75rem;
+  }
+  
+  /* Larger touch zones for simulation controls */
+  .simulation-container button {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 0.5rem;
+  }
+}
+
+/* Safe area support for mobile devices */
+:root {
+  --sat: env(safe-area-inset-top, 0px);
+  --sar: env(safe-area-inset-right, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
+  --sal: env(safe-area-inset-left, 0px);
+}
+
+/* Mobile portrait optimizations */
+@media (max-width: 767px) and (orientation: portrait) {
+  .simulation-container {
+    /* Ensure simulations are properly sized on mobile portrait */
+    min-height: 250px;
+    max-height: 60vh;
+  }
+}
+
+/* Mobile landscape optimizations */
+@media (max-width: 1023px) and (orientation: landscape) {
+  .simulation-container {
+    /* Make better use of landscape space */
+    max-height: 70vh;
+  }
+  
+  /* Adjust navigation for landscape */
+  .app-with-banner {
+    padding-top: 0;
+  }
+}
+
+/* ========================================
    RESPONSIVE
    ======================================== */
 
