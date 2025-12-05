@@ -374,7 +374,7 @@ export function MetaModelingSim({ width, height, isMobile = false, isFullscreen 
         </div>
         {selectedAgent !== null && (
           <div className="mt-2 pt-2 border-t border-border">
-            <span className="text-synapse">Self-model</span>
+            <span className="text-accent">Self-model</span>
             <span className="text-muted"> = the strange loop that may constitute consciousness</span>
           </div>
         )}

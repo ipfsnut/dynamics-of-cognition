@@ -469,7 +469,7 @@ export function AutopoiesisSim({ width, height, isMobile = false, isFullscreen =
       <CollapsiblePanel title="Autopoiesis" position="top-left" defaultOpen={!isMobile} isFullscreen={isFullscreen}>
         <div className="text-muted">
           The membrane enables processes that produce membrane components. 
-          <span className="text-synapse"> Purple producers</span> consume 
+          <span className="text-accent"> Purple producers</span> consume 
           <span className="text-green-400"> green nutrients</span> to repair 
           <span className="text-glow"> the boundary</span>. Circular causality.
         </div>

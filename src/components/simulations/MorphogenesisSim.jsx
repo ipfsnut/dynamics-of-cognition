@@ -408,7 +408,7 @@ export function MorphogenesisSim({ width, height, isMobile = false, isFullscreen
         </div>
         <div className="mt-2 h-2 w-full bg-surface rounded overflow-hidden">
           <div 
-            className="h-full bg-gradient-to-r from-glow to-synapse transition-all"
+            className="h-full bg-gradient-to-r from-glow to-accent transition-all"
             style={{ width: `${(1 - error) * 100}%` }}
           />
         </div>
@@ -456,7 +456,7 @@ export function MorphogenesisSim({ width, height, isMobile = false, isFullscreen
           <button
             onClick={() => setShowTarget(!showTarget)}
             className={`px-2 py-1 border rounded text-xs font-mono transition-colors ${
-              showTarget ? 'bg-synapse/20 border-synapse text-synapse' : 'border-border text-muted'
+              showTarget ? 'bg-accent/20 border-accent text-accent' : 'border-border text-muted'
             }`}
           >
             Target
@@ -513,7 +513,7 @@ export function MorphogenesisSim({ width, height, isMobile = false, isFullscreen
                 step="0.01"
                 value={gapJunctionStrength}
                 onChange={(e) => setGapJunctionStrength(parseFloat(e.target.value))}
-                className="w-full h-1 bg-border rounded-lg appearance-none cursor-pointer accent-synapse"
+                className="w-full h-1 bg-border rounded-lg appearance-none cursor-pointer accent-accent"
               />
               <div className="text-xs text-muted/60 mt-1">Electrical coupling — how fast voltage spreads</div>
             </div>

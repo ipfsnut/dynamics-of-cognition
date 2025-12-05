@@ -381,7 +381,7 @@ export function ControllosphereSim({ width, height, isMobile = false, isFullscre
           step="0.05"
           value={controlSignal}
           onChange={(e) => setControlSignal(parseFloat(e.target.value))}
-          className="w-full h-2 bg-border rounded-lg appearance-none cursor-pointer accent-synapse"
+          className="w-full h-2 bg-border rounded-lg appearance-none cursor-pointer accent-accent"
         />
         <div className="flex justify-between mt-1 text-xs font-mono text-muted">
           <span>Relaxed</span>
