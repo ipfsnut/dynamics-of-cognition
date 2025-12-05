@@ -399,6 +399,14 @@ h1, h2, h3, h4, h5, h6 {
   user-select: none;
 }
 
+/* On mobile, position banner below the navigation header */
+@media (max-width: 1023px) {
+  .confidential-banner {
+    top: 3.5rem; /* 56px mobile header height */
+    z-index: 40; /* Below mobile nav (z-50) but above content */
+  }
+}
+
 .confidential-icon {
   opacity: 0.6;
   font-size: 0.5rem;
@@ -411,6 +419,13 @@ h1, h2, h3, h4, h5, h6 {
 /* Offset body content to account for fixed banner */
 .app-with-banner {
   padding-top: 1.8rem;
+}
+
+/* On mobile, account for both nav header and banner */
+@media (max-width: 1023px) {
+  .app-with-banner {
+    padding-top: 5.3rem; /* 56px nav + ~28px banner */
+  }
 }
 
 /* ========================================
