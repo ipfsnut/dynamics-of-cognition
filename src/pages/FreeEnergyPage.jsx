@@ -25,7 +25,7 @@ export function FreeEnergyPage({ section, prevSection, nextSection, onNavigate }
         </p>
       </Prose>
 
-      <Subsection number="3.1" title="The Markov Blanket Formalism">
+      <Subsection number="1.1" title="The Markov Blanket Formalism">
         <Prose>
           <p>
             The mathematical architecture rests on the <strong>Markov blanket</strong>—a 
@@ -69,7 +69,7 @@ export function FreeEnergyPage({ section, prevSection, nextSection, onNavigate }
         </SimulationCanvas>
       </Subsection>
 
-      <Subsection number="3.2" title="Variational Free Energy">
+      <Subsection number="1.2" title="Variational Free Energy">
         <Prose>
           <p>
             The central quantity is variational free energy (<Math>{`F`}</Math>), which 
@@ -117,7 +117,7 @@ export function FreeEnergyPage({ section, prevSection, nextSection, onNavigate }
         </Prose>
       </Subsection>
 
-      <Subsection number="3.3" title="Addressing the Pearl/Friston Distinction">
+      <Subsection number="1.3" title="Addressing the Pearl/Friston Distinction">
         <Prose>
           <p>
             Critics have argued that a "persistent confusion" exists between the formal use of 
