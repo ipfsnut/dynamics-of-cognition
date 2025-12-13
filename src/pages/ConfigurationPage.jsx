@@ -140,6 +140,15 @@ export function ConfigurationPage({ section, prevSection, nextSection, onNavigat
           thought IS the configuration. The apparent distinction between "having a thought" and 
           "being in a bodily state" is an artifact of introspection, not a feature of the system.
         </KeyInsight>
+
+        <SimulationCanvas 
+          title="H(ω) Demonstration: Categorical Accessibility"
+          description="CSP solver with limited memory demonstrates categorical accessibility - operations either succeed or fail, never degrade continuously."
+        >
+          {({ width, height }) => (
+            <CSPExperimentSim width={width} height={height} />
+          )}
+        </SimulationCanvas>
       </Subsection>
 
       <Subsection number="7.4" title="Autonomic State Constrains Psychological Possibility">
