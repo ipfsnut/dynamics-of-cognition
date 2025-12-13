@@ -10,6 +10,7 @@ import paperContent from './assets/paper.md?raw';
 export function PaperPage() {
   const navigate = useNavigate();
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,14 +40,15 @@ export function PaperPage() {
       {/* Header */}
       <header className="sticky top-0 z-50 bg-void/95 backdrop-blur border-b border-border">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <span className="text-sm text-text font-display">Dynamics of Cognition</span>
-            <span className="text-xs text-muted font-mono">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <span className="text-xs sm:text-sm text-text font-display">Dynamics of Cognition</span>
+            <span className="hidden sm:inline text-xs text-muted font-mono">
               Working Draft · v0.1
             </span>
           </div>
           
-          <div className="flex items-center gap-3">
+          {/* Desktop navigation */}
+          <div className="hidden md:flex items-center gap-2">
             <button
               onClick={() => navigate('/graph')}
               className="flex items-center gap-2 px-3 py-1.5 bg-accent/10 hover:bg-accent/20 text-accent border border-accent/30 rounded-lg transition-colors text-sm"
@@ -77,10 +79,74 @@ export function PaperPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
                   d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
-              <span>Launch Interactive Beta</span>
+              <span>Interactive Beta</span>
             </button>
           </div>
+          
+          {/* Mobile hamburger menu */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden p-2 -mr-2 text-muted hover:text-text"
+            aria-label="Menu"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              {mobileMenuOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
         </div>
+        
+        {/* Mobile menu dropdown */}
+        {mobileMenuOpen && (
+          <div className="md:hidden border-t border-border bg-void/95 backdrop-blur">
+            <div className="px-4 py-3 space-y-2">
+              <button
+                onClick={() => {
+                  navigate('/graph');
+                  setMobileMenuOpen(false);
+                }}
+                className="w-full flex items-center gap-3 px-3 py-2 bg-accent/10 hover:bg-accent/20 text-accent border border-accent/30 rounded-lg transition-colors text-sm"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
+                </svg>
+                <span>View Graph</span>
+              </button>
+
+              <button
+                onClick={() => {
+                  navigate('/about');
+                  setMobileMenuOpen(false);
+                }}
+                className="w-full flex items-center gap-3 px-3 py-2 bg-border/10 hover:bg-border/20 text-muted hover:text-text border border-border/30 rounded-lg transition-colors text-sm"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
+                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>About This Project</span>
+              </button>
+              
+              <button
+                onClick={() => {
+                  navigate('/explore/introduction');
+                  setMobileMenuOpen(false);
+                }}
+                className="w-full flex items-center gap-3 px-3 py-2 bg-glow/10 hover:bg-glow/20 text-glow border border-glow/30 rounded-lg transition-colors text-sm"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
+                    d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                <span>Launch Interactive Beta</span>
+              </button>
+            </div>
+          </div>
+        )}
       </header>
 
       {/* Paper content */}

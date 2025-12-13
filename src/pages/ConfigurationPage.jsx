@@ -4,6 +4,7 @@ import { SimulationCanvas } from '../components/SimulationCanvas';
 import { Bibliography } from '../components/Bibliography';
 import { AnnealingSim } from '../components/simulations/AnnealingSim';
 import { EnergyAffordanceSim } from '../components/simulations/EnergyAffordanceSim';
+import { CSPExperimentSim } from '../components/simulations/CSPExperimentSim';
 
 export function ConfigurationPage({ section, prevSection, nextSection, onNavigate }) {
   return (

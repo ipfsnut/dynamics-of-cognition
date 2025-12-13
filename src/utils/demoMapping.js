@@ -95,13 +95,23 @@ export const NOTE_TO_DEMO_MAP = {
   // Configuration Constraint & H(ω)
   'canonical/08-configuration': {
     section: 'configuration-constraint',
-    simulations: ['annealing'],
+    simulations: ['annealing', 'csp-experiment'],
     description: 'Experience cognition as whole-body annealing'
   },
   'concepts/h-omega': {
     section: 'configuration-constraint',
-    simulations: ['annealing'],
+    simulations: ['annealing', 'csp-experiment'],
     description: 'Explore what cannot be configured cannot be thought'
+  },
+  'experiments/csp-categorical-accessibility': {
+    section: 'configuration-constraint',
+    simulations: ['csp-experiment'],
+    description: 'Test categorical accessibility with constraint satisfaction problems'
+  },
+  'research/h-omega-clinical': {
+    section: 'configuration-constraint',
+    simulations: ['csp-experiment'],
+    description: 'Clinical evidence for the configuration constraint'
   },
   'concepts/affordance': {
     section: 'configuration-constraint',
@@ -147,6 +157,8 @@ export const DEMO_TO_NOTES_MAP = {
   'configuration-constraint': [
     'canonical/08-configuration',
     'concepts/h-omega',
+    'experiments/csp-categorical-accessibility',
+    'research/h-omega-clinical',
     'concepts/affordance'
   ],
   'nested-blankets': [
