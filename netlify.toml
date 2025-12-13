@@ -1,0 +1,30 @@
+# Netlify configuration for Dynamics of Cognition
+# 
+# Required environment variables (set in Netlify dashboard):
+#   VAULT_GITHUB_TOKEN - GitHub Personal Access Token with repo access
+#   VAULT_REPO - Repository path, e.g., "username/dynamics-of-cognition-vault"
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Password protection (HTTP Basic Auth)
+# Set these in Netlify dashboard under Site settings > Access control > Visitor access
+# Or use Netlify Identity for more sophisticated access control
+
+# Redirect SPA routes to index.html
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Security headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

@@ -1,0 +1,525 @@
+/* Font imports - must be first */
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css');
+
+@import "tailwindcss";
+
+/* ========================================
+   DYNAMICS OF COGNITION
+   Design System
+   ======================================== */
+
+/* Custom properties */
+:root {
+  /* Colors - deep space aesthetic */
+  --color-void: #0a0a0f;
+  --color-deep: #12121a;
+  --color-surface: #1a1a24;
+  --color-border: #2a2a3a;
+  --color-text: #e8e8f0;
+  --color-muted: #8888a0;
+  --color-glow: #7dd3fc;
+  --color-glow-dim: #38bdf8;
+  --color-accent: #a78bfa;
+  --color-warm: #fbbf24;
+  
+  /* Typography */
+  --font-display: 'Newsreader', Georgia, serif;
+  --font-body: 'Source Sans 3', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  
+  /* Spacing scale */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+}
+
+/* ========================================
+   TAILWIND THEME EXTENSION
+   ======================================== */
+
+@theme {
+  --color-void: #0a0a0f;
+  --color-deep: #12121a;
+  --color-surface: #1a1a24;
+  --color-border: #2a2a3a;
+  --color-text: #e8e8f0;
+  --color-muted: #8888a0;
+  --color-glow: #7dd3fc;
+  --color-accent: #a78bfa;
+  --color-warm: #fbbf24;
+  
+  --font-display: 'Newsreader', Georgia, serif;
+  --font-body: 'Source Sans 3', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+/* ========================================
+   BASE STYLES
+   ======================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  background: var(--color-void);
+  color: var(--color-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--color-glow);
+  color: var(--color-void);
+}
+
+/* ========================================
+   TYPOGRAPHY
+   ======================================== */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* ========================================
+   CUSTOM UTILITIES
+   ======================================== */
+
+/* Noise texture overlay */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* Glow effects */
+.text-glow {
+  color: var(--color-glow);
+  text-shadow: 0 0 30px rgba(125, 211, 252, 0.3);
+}
+
+.glow-border {
+  box-shadow: 0 0 20px -5px rgba(125, 211, 252, 0.2);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-glow), var(--color-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ========================================
+   SCROLLBAR
+   ======================================== */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-void);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-muted);
+}
+
+/* ========================================
+   SIMULATION CANVAS
+   ======================================== */
+
+.simulation-container {
+  position: relative;
+  background: var(--color-deep);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.simulation-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 50% 0%,
+    rgba(125, 211, 252, 0.05) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* ========================================
+   MATH BLOCKS
+   ======================================== */
+
+.katex-display {
+  margin: 1.5rem 0;
+  padding: 1.25rem;
+  background: var(--color-deep);
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  overflow-x: auto;
+}
+
+.katex {
+  font-size: 1.1em;
+  color: var(--color-text);
+}
+
+/* ========================================
+   PAGE TRANSITIONS
+   ======================================== */
+
+.page-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms ease-out, transform 300ms ease-out;
+}
+
+.page-exit {
+  opacity: 1;
+}
+
+.page-exit-active {
+  opacity: 0;
+  transition: opacity 200ms ease-in;
+}
+
+/* ========================================
+   BIBLIOGRAPHY / REFERENCES
+   ======================================== */
+
+/* APA style hanging indent for references */
+.paper-content h2:has(+ p) + p,
+.paper-content h2 + p {
+  /* Check if this is in the references section */
+}
+
+/* Target paragraphs that come after "References" heading */
+.paper-content h2[id*="references"] ~ p,
+.paper-content h2:last-of-type ~ p {
+  padding-left: 2.5rem;
+  text-indent: -2.5rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.8;
+}
+
+.reference-item {
+  padding: 0.75rem 1rem;
+  background: var(--color-deep);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.reference-item:hover {
+  border-color: var(--color-glow);
+  background: rgba(125, 211, 252, 0.05);
+}
+
+
+.reference-authors {
+  color: var(--color-text);
+  font-weight: 500;
+}
+
+.reference-title {
+  color: var(--color-glow);
+  font-style: italic;
+}
+
+.reference-journal {
+  color: var(--color-muted);
+  font-size: 0.9em;
+}
+
+/* ========================================
+   NAVIGATION
+   ======================================== */
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  color: var(--color-muted);
+  text-decoration: none;
+  border-radius: 6px;
+  transition: all 0.15s ease;
+  font-size: 0.9rem;
+}
+
+.nav-link:hover {
+  color: var(--color-text);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-link.active {
+  color: var(--color-glow);
+  background: rgba(125, 211, 252, 0.1);
+}
+
+.nav-number {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  min-width: 1.5rem;
+}
+
+/* ========================================
+   KEY INSIGHT CALLOUT
+   ======================================== */
+
+.key-insight {
+  position: relative;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  background: linear-gradient(135deg, rgba(125, 211, 252, 0.08), rgba(167, 139, 250, 0.05));
+  border: 1px solid rgba(125, 211, 252, 0.2);
+  border-radius: 12px;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-style: italic;
+  line-height: 1.7;
+  color: var(--color-text);
+}
+
+.key-insight::before {
+  content: '✦';
+  position: absolute;
+  top: -0.5rem;
+  left: 1.5rem;
+  background: var(--color-void);
+  padding: 0 0.5rem;
+  color: var(--color-glow);
+  font-style: normal;
+}
+
+/* ========================================
+   BUTTONS
+   ======================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--color-glow);
+  color: var(--color-void);
+  border-color: var(--color-glow);
+}
+
+.btn-primary:hover {
+  background: var(--color-glow-dim);
+  border-color: var(--color-glow-dim);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(125, 211, 252, 0.3);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--color-muted);
+  border-color: var(--color-border);
+}
+
+.btn-ghost:hover {
+  color: var(--color-text);
+  border-color: var(--color-muted);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* ========================================
+   CONFIDENTIAL BANNER
+   ======================================== */
+
+.confidential-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100; /* Above everything */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.4rem 1rem;
+  background: linear-gradient(
+    90deg,
+    rgba(167, 139, 250, 0.1) 0%,
+    rgba(167, 139, 250, 0.15) 50%,
+    rgba(167, 139, 250, 0.1) 100%
+  );
+  border-bottom: 1px solid rgba(167, 139, 250, 0.3);
+  backdrop-filter: blur(8px);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  user-select: none;
+}
+
+/* On mobile, position banner below the navigation header */
+@media (max-width: 1023px) {
+  .confidential-banner {
+    top: 3.5rem; /* 56px mobile header height */
+    z-index: 40; /* Below mobile nav (z-50) but above content */
+  }
+}
+
+.confidential-icon {
+  opacity: 0.6;
+  font-size: 0.5rem;
+}
+
+.confidential-text {
+  opacity: 0.9;
+}
+
+/* Offset body content to account for fixed banner */
+.app-with-banner {
+  padding-top: 1.8rem; /* Space for the banner */
+}
+
+/* On mobile, account for both nav header and banner */
+@media (max-width: 1023px) {
+  .app-with-banner {
+    padding-top: 5.3rem; /* 56px nav + ~28px banner */
+  }
+}
+
+/* ========================================
+   MOBILE OPTIMIZATIONS
+   ======================================== */
+
+/* Fullscreen simulation overlay */
+.simulation-fullscreen {
+  /* Prevent touch behaviors that interfere with interactions */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+/* Mobile touch targets - minimum 44px */
+@media (max-width: 767px), (hover: none) {
+  .btn {
+    min-height: 44px;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+  }
+  
+  .nav-link {
+    min-height: 44px;
+    padding: 0.75rem;
+  }
+  
+  /* Larger touch zones for simulation controls */
+  .simulation-container button {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 0.5rem;
+  }
+}
+
+/* Safe area support for mobile devices */
+:root {
+  --sat: env(safe-area-inset-top, 0px);
+  --sar: env(safe-area-inset-right, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
+  --sal: env(safe-area-inset-left, 0px);
+}
+
+/* Mobile portrait optimizations */
+@media (max-width: 767px) and (orientation: portrait) {
+  .simulation-container {
+    /* Ensure simulations are properly sized on mobile portrait */
+    min-height: 250px;
+    max-height: 60vh;
+  }
+}
+
+/* Mobile landscape optimizations */
+@media (max-width: 1023px) and (orientation: landscape) {
+  .simulation-container {
+    /* Make better use of landscape space */
+    max-height: 70vh;
+  }
+  
+  /* Adjust navigation for landscape */
+  .app-with-banner {
+    padding-top: 0;
+  }
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+  :root {
+    font-size: 15px;
+  }
+  
+  .katex-display {
+    padding: 1rem;
+    font-size: 0.9em;
+  }
+}

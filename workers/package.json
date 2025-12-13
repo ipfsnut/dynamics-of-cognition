@@ -1,0 +1,15 @@
+{
+  "name": "dynamics-auth-worker",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "auth-worker.js",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "upload-content": "node upload-content.js"
+  },
+  "keywords": ["cloudflare-workers", "authentication"],
+  "author": "",
+  "license": "ISC",
+  "description": "Authentication worker for Dynamics of Cognition"
+}

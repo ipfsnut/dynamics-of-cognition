@@ -1,0 +1,181 @@
+/* VaultGraph Component Styles */
+.vault-graph-container {
+  position: relative;
+  background: #0d1117;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #21262d;
+}
+
+.vault-graph-svg {
+  display: block;
+  background: radial-gradient(circle at center, #161b22 0%, #0d1117 70%);
+}
+
+/* Controls */
+.vault-graph-controls {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 10;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.reheat-button {
+  background: rgba(30, 30, 30, 0.9);
+  border: 1px solid #444;
+  color: #ccc;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(4px);
+}
+
+.reheat-button:hover {
+  background: rgba(40, 40, 40, 0.9);
+  border-color: #666;
+  color: #fff;
+}
+
+/* Tooltip */
+.graph-tooltip {
+  background: rgba(0, 0, 0, 0.9);
+  padding: 12px;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 13px;
+  max-width: 250px;
+  backdrop-filter: blur(8px);
+  border: 1px solid #333;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.tooltip-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.tooltip-header strong {
+  color: #fff;
+  font-weight: 600;
+}
+
+.folder-badge {
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}
+
+.tooltip-stats {
+  font-size: 11px;
+  color: #999;
+}
+
+/* Legend */
+.graph-legend {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  backdrop-filter: blur(4px);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: #ccc;
+}
+
+.legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Graph elements (styled via D3) */
+.vault-graph-svg .nodes circle {
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.5));
+  transition: opacity 0.2s ease;
+}
+
+.vault-graph-svg .links line {
+  transition: stroke-opacity 0.2s ease;
+}
+
+.vault-graph-svg .labels text {
+  paint-order: stroke fill;
+  stroke: #0d1117;
+  stroke-width: 2px;
+  stroke-linejoin: round;
+  font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .vault-graph-controls {
+    top: 12px;
+    left: 12px;
+  }
+  
+  .graph-tooltip {
+    max-width: 200px;
+    font-size: 12px;
+  }
+  
+  .graph-legend {
+    bottom: 12px;
+    right: 12px;
+    padding: 8px;
+  }
+  
+  .legend-item {
+    font-size: 10px;
+  }
+}
+
+/* Loading state */
+.vault-graph-container.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+}
+
+.vault-graph-container.loading::before {
+  content: "Loading graph...";
+  color: #666;
+  font-size: 14px;
+}
+
+/* Empty state */
+.vault-graph-container.empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  color: #666;
+  font-size: 14px;
+}
+
+.vault-graph-container.empty::before {
+  content: "No graph data available";
+}
