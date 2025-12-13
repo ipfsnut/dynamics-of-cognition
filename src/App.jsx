@@ -3,6 +3,7 @@ import { Explorer } from './Explorer';
 import { PaperPage } from './PaperPage';
 import GraphPage from './pages/GraphPage';
 import NotePage from './pages/NotePage';
+import AboutPage from './pages/AboutPage';
 import { ConfidentialBanner } from './components/ConfidentialBanner';
 import { SECTIONS, getSectionBySlug } from './data/sections';
 
@@ -29,6 +30,9 @@ export default function App() {
           
           {/* Knowledge graph route */}
           <Route path="/graph" element={<GraphPage />} />
+          
+          {/* About page route */}
+          <Route path="/about" element={<AboutPage />} />
           
           {/* Individual vault note routes */}
           <Route path="/vault/:folder/:noteId" element={<NotePage />} />
