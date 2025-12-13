@@ -1,9 +1,11 @@
-import { useMemo } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
 import remarkGfm from 'remark-gfm';
 import rehypeKatex from 'rehype-katex';
 import { SimulationCanvas } from './SimulationCanvas';
+import WikiLink from './vault/WikiLink';
+import { parseWikiLinks } from '../utils/vaultParser';
 
 // Import all simulations
 import { MarkovBlanketSim } from './simulations/MarkovBlanketSim';
@@ -172,13 +174,58 @@ function parseContent(content) {
     segments.push({ type: 'markdown', content: currentText.join('\n') });
   }
 
+
   return segments;
 }
 
 /**
- * Markdown component configuration (same as MarkdownViewer)
+ * Process text content for wiki links
  */
-const markdownComponents = {
+function processTextContent(content, vaultData) {
+  if (typeof content !== 'string') return content;
+  
+  
+  const parts = parseWikiLinks(content, vaultData?.notes);
+  return parts.map((part, index) => {
+    if (typeof part === 'string') {
+      return part;
+    } else if (part.type === 'wikilink') {
+      return (
+        <WikiLink
+          key={part.key}
+          target={part.target}
+          display={part.display}
+          notes={vaultData?.notes}
+        />
+      );
+    }
+    return null;
+  });
+}
+
+/**
+ * Recursively process children for wiki links
+ */
+function processChildren(children, vaultData) {
+  if (typeof children === 'string') {
+    return processTextContent(children, vaultData);
+  }
+  if (Array.isArray(children)) {
+    return children.map((child, index) => {
+      if (typeof child === 'string') {
+        return processTextContent(child, vaultData);
+      }
+      return child;
+    });
+  }
+  return children;
+}
+
+/**
+ * Create markdown components with wiki link support
+ */
+function createMarkdownComponents(vaultData) {
+  return {
   h1: ({ children }) => (
     <h1 className="font-display text-3xl sm:text-4xl text-glow font-light leading-tight mb-6 mt-12 first:mt-0">
       {children}
@@ -201,7 +248,7 @@ const markdownComponents = {
   ),
   p: ({ children }) => (
     <p className="text-text/80 leading-relaxed mb-4">
-      {children}
+      {processChildren(children, vaultData)}
     </p>
   ),
   strong: ({ children }) => (
@@ -216,7 +263,7 @@ const markdownComponents = {
   ),
   blockquote: ({ children }) => (
     <blockquote className="border-l-2 border-glow/30 pl-4 my-4 text-text/70 italic">
-      {children}
+      {processChildren(children, vaultData)}
     </blockquote>
   ),
   ul: ({ children }) => (
@@ -231,7 +278,7 @@ const markdownComponents = {
   ),
   li: ({ children }) => (
     <li className="leading-relaxed">
-      {children}
+      {processChildren(children, vaultData)}
     </li>
   ),
   hr: () => (
@@ -298,7 +345,8 @@ const markdownComponents = {
       {children}
     </td>
   ),
-};
+  };
+}
 
 /**
  * Render a simulation component
@@ -333,8 +381,39 @@ function SimulationBlock({ id, title: customTitle, description: customDescriptio
  * Use ::sim[simulation-id] markers in markdown to embed simulations.
  * Optional: ::sim[simulation-id]{title="Custom" description="Custom desc"}
  */
-export function SectionMarkdownViewer({ content }) {
+export function SectionMarkdownViewer({ content, vaultData: passedVaultData }) {
+  const [vaultData, setVaultData] = useState(passedVaultData || null);
   const segments = useMemo(() => parseContent(content), [content]);
+  
+  
+  // Only create markdown components when vault data is available
+  const markdownComponents = useMemo(() => {
+    if (!vaultData) {
+      // Return default components without wiki link processing
+      return createMarkdownComponents(null);
+    }
+    return createMarkdownComponents(vaultData);
+  }, [vaultData]);
+
+  // Load vault data for wiki links only if not passed as prop
+  useEffect(() => {
+    if (passedVaultData) {
+      setVaultData(passedVaultData);
+      return;
+    }
+    
+    const loadVaultData = async () => {
+      try {
+        const manifestModule = await import('../data/vault-manifest.json');
+        setVaultData(manifestModule.default);
+      } catch (err) {
+        console.warn('Failed to load vault manifest:', err);
+        // Still set empty vault data to avoid infinite loading
+        setVaultData({ notes: {} });
+      }
+    };
+    loadVaultData();
+  }, [passedVaultData]);
 
   return (
     <div className="section-content">

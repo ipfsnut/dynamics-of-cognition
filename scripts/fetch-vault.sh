@@ -37,7 +37,9 @@ mkdir -p "$PROJECT_ROOT/src/data"
 # Load .env if it exists (for local dev)
 if [ -f "$PROJECT_ROOT/.env" ]; then
   echo -e "${YELLOW}Loading .env file...${NC}"
-  export $(cat "$PROJECT_ROOT/.env" | grep -v '^#' | xargs)
+  set -a
+  source "$PROJECT_ROOT/.env"
+  set +a
 fi
 
 # Expand tilde in VAULT_PATH
@@ -113,9 +115,14 @@ echo "" >> "$TEMP_PAPER"
 
 # Get introduction content (skip the title and nav links)
 if [ -f "$VAULT_SOURCE/canonical/00-introduction.md" ]; then
-  # Extract just the intro paragraphs (between title and "## Paper Structure")
-  # Use sed to remove the last line (the ---) - compatible with macOS
-  sed -n '/^The question of what constitutes/,/^---$/p' "$VAULT_SOURCE/canonical/00-introduction.md" | sed '$ d' >> "$TEMP_PAPER"
+  # Extract content starting from "The Central Thesis" up to the navigation footer
+  # Use awk to properly handle the content extraction
+  awk '
+    /^> A configuration-theoretic account/ { start = 1; print; next }
+    start && /^---$/ { exit }
+    start && /^\*\*Next:/ { exit }
+    start { print }
+  ' "$VAULT_SOURCE/canonical/00-introduction.md" >> "$TEMP_PAPER"
   echo "" >> "$TEMP_PAPER"
   echo "---" >> "$TEMP_PAPER"
   echo "" >> "$TEMP_PAPER"
@@ -154,7 +161,7 @@ for i in 01 02 03 04 05 06 07 08 09 10 11 12; do
     # Get content: skip title line, blockquote subtitle, and navigation footer
     # This extracts everything between the subtitle and the "---" before "See also"
     awk '
-      /^>/ { next }  # Skip blockquote subtitle
+      /^> [^📐]/ { next }  # Skip blockquote subtitle (but not tutorial links with 📐)
       /^# / { next }  # Skip title
       /^---$/ { if (seen_content) exit; next }  # Stop at footer separator
       /^\*\*See also/ { exit }  # Stop at see also

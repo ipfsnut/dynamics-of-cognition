@@ -34,8 +34,8 @@ export function VaultSectionPage({
       startIndex++;
     }
     
-    // Skip subtitle blockquote (> subtitle)
-    if (lines[startIndex]?.startsWith('> ')) {
+    // Skip subtitle blockquote (> subtitle) but NOT tutorial links (> 📐)
+    if (lines[startIndex]?.startsWith('> ') && !lines[startIndex].includes('📐')) {
       startIndex++;
     }
     

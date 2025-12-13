@@ -6,10 +6,11 @@ import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import 'katex/dist/katex.min.css';
 
+import { SectionMarkdownViewer } from '../components/SectionMarkdownViewer';
 import WikiLink from '../components/vault/WikiLink';
 import BacklinksPanel from '../components/vault/BacklinksPanel';
 import DemoLink from '../components/vault/DemoLink';
-import { parseWikiLinks } from '../utils/vaultParser';
+import { parseWikiLinks, getFolderColor } from '../utils/vaultParser';
 
 export default function NotePage() {
   const { folder, noteId } = useParams();
@@ -44,7 +45,23 @@ export default function NotePage() {
 
         // Use the full content from the manifest
         // Content is password-protected at the app level
-        const content = foundNote.content || `# ${foundNote.title}\n\n${foundNote.excerpt}\n\n*Content not available.*`;
+        let content = foundNote.content || `# ${foundNote.title}\n\n${foundNote.excerpt}\n\n*Content not available.*`;
+        
+        // Remove the title line since we're displaying it separately
+        const lines = content.split('\n');
+        let startIndex = 0;
+        
+        // Skip title line (# Title)
+        if (lines[0]?.startsWith('# ')) {
+          startIndex = 1;
+        }
+        
+        // Skip empty lines after title
+        while (startIndex < lines.length && lines[startIndex].trim() === '') {
+          startIndex++;
+        }
+        
+        content = lines.slice(startIndex).join('\n').trim();
         setNoteContent(content);
 
         setLoading(false);
@@ -65,35 +82,6 @@ export default function NotePage() {
   };
 
 
-  // Custom components for markdown rendering
-  const components = {
-    // Replace [[wiki-links]] with WikiLink components
-    p: ({ children }) => {
-      if (typeof children === 'string') {
-        const parts = parseWikiLinks(children, vaultData?.notes);
-        return (
-          <p>
-            {parts.map((part) => {
-              if (typeof part === 'string') {
-                return part;
-              } else if (part.type === 'wikilink') {
-                return (
-                  <WikiLink
-                    key={part.key}
-                    target={part.target}
-                    display={part.display}
-                    notes={vaultData?.notes}
-                  />
-                );
-              }
-              return null;
-            })}
-          </p>
-        );
-      }
-      return <p>{children}</p>;
-    }
-  };
 
   if (loading) {
     return (
@@ -167,22 +155,30 @@ export default function NotePage() {
       </div>
 
       {/* Content */}
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Main content */}
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-3">
             {/* Interactive demo link */}
             <DemoLink noteId={fullNoteId} />
             
-            <article className="prose prose-invert max-w-none">
-              <ReactMarkdown
-                remarkPlugins={[remarkGfm, remarkMath]}
-                rehypePlugins={[rehypeKatex]}
-                components={components}
-              >
-                {noteContent}
-              </ReactMarkdown>
-            </article>
+            {/* Note title - using same styling as Explorer sections */}
+            <div className="mb-8">
+              <div className="flex items-center gap-3 mb-2">
+                <div 
+                  className="w-3 h-3 rounded-full" 
+                  style={{ background: getFolderColor(note.folder) }}
+                ></div>
+                <span className="text-sm text-secondary capitalize">{note.folder}</span>
+              </div>
+              <h1 className="font-display text-3xl sm:text-4xl text-glow font-light leading-tight">
+                {note.title}
+              </h1>
+            </div>
+            
+            <div className="max-w-none">
+              <SectionMarkdownViewer content={noteContent} />
+            </div>
           </div>
 
           {/* Sidebar */}
@@ -216,16 +212,4 @@ export default function NotePage() {
       </div>
     </div>
   );
-}
-
-// Helper function
-function getFolderColor(folder) {
-  const colors = {
-    canonical: '#3b82f6',
-    concepts: '#8b5cf6', 
-    research: '#10b981',
-    evidence: '#f59e0b',
-    meta: '#6b7280'
-  };
-  return colors[folder] || '#9ca3af';
 }

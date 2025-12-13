@@ -165,6 +165,7 @@ export function parseWikiLinks(content, notes) {
     return content;
   }
   
+  
   const parts = [];
   const regex = /\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g;
   let lastIndex = 0;
@@ -179,6 +180,7 @@ export function parseWikiLinks(content, notes) {
     const target = match[1].trim();
     const display = match[2]?.trim() || target;
     const resolvedTarget = resolveNoteId(target, notes || {});
+    
     
     // Add the wiki-link as a component
     parts.push({

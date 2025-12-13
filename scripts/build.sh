@@ -3,7 +3,9 @@ set -e
 
 # Source .env file if it exists
 if [ -f .env ]; then
-    export $(cat .env | xargs)
+    set -a
+    source .env
+    set +a
 fi
 
 npm run fetch-vault
