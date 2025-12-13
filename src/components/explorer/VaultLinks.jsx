@@ -31,6 +31,14 @@ export default function VaultLinks({ sectionSlug }) {
       }
     } else if (noteId.startsWith('concepts/')) {
       if (name === 'h-omega') title = 'H(ω) — Configuration Constraint';
+    } else if (noteId.startsWith('tutorials/')) {
+      // Format tutorial titles nicely
+      const sectionNum = name.match(/section-(\d+)-/)?.[1];
+      if (sectionNum) {
+        title = `Math Tutorial ${sectionNum}`;
+      } else {
+        title = title.replace(/^section /, 'Section ').replace(/ math tutorial$/, ' Math Tutorial');
+      }
     }
     
     return {

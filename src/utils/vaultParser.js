@@ -112,6 +112,8 @@ export const folderColors = {
   concepts: '#8b5cf6',   // purple
   research: '#10b981',   // green
   evidence: '#f59e0b',   // amber
+  tutorials: '#f97316', // orange
+  experiments: '#ef4444', // red
   meta: '#6b7280',       // gray
   default: '#9ca3af'
 };

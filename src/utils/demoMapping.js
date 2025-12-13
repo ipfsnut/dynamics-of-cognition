@@ -132,43 +132,53 @@ export const DEMO_TO_NOTES_MAP = {
   'free-energy': [
     'concepts/free-energy',
     'concepts/markov-blanket', 
-    'canonical/01-free-energy'
+    'canonical/01-free-energy',
+    'tutorials/section-01-math-tutorial'
   ],
   'bioelectric-networks': [
     'canonical/02-bioelectric',
-    'concepts/morphogenetic-computation'
+    'concepts/morphogenetic-computation',
+    'tutorials/section-02-math-tutorial'
   ],
   'homeostatic-feelings': [
     'canonical/03-homeostatic',
-    'concepts/interoception'
+    'concepts/interoception',
+    'tutorials/section-03-math-tutorial'
   ],
   'autopoiesis': [
     'canonical/04-autopoiesis',
-    'concepts/enactivism'
+    'concepts/enactivism',
+    'tutorials/section-04-math-tutorial'
   ],
   'language-networks': [
-    'canonical/05-language'
+    'canonical/05-language',
+    'tutorials/section-05-math-tutorial'
   ],
   'controllosphere': [
     'canonical/06-controllosphere',
     'concepts/controllosphere',
-    'concepts/intrinsic-manifold'
+    'concepts/intrinsic-manifold',
+    'tutorials/section-06-math-tutorial'
   ],
   'configuration-constraint': [
     'canonical/08-configuration',
     'concepts/h-omega',
     'experiments/csp-categorical-accessibility',
     'research/h-omega-clinical',
-    'concepts/affordance'
+    'concepts/affordance',
+    'tutorials/section-07-math-tutorial'
   ],
   'nested-blankets': [
-    'canonical/07-nested-blankets'
+    'canonical/07-nested-blankets',
+    'tutorials/section-09-math-tutorial'
   ],
   'consciousness': [
-    'concepts/consciousness'
+    'concepts/consciousness',
+    'tutorials/section-10-math-tutorial'
   ],
   'empirical-predictions': [
-    'evidence/predictions'
+    'evidence/predictions',
+    'tutorials/section-11-math-tutorial'
   ]
 };
 
