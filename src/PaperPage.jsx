@@ -57,6 +57,17 @@ export function PaperPage() {
               </svg>
               <span>View Graph</span>
             </button>
+
+            <button
+              onClick={() => navigate('/about')}
+              className="flex items-center gap-2 px-3 py-1.5 bg-border/10 hover:bg-border/20 text-muted hover:text-text border border-border/30 rounded-lg transition-colors text-sm"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
+                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>About</span>
+            </button>
             
             <button
               onClick={() => navigate('/explore/introduction')}
@@ -77,6 +88,26 @@ export function PaperPage() {
         <article className="paper-content">
           <MarkdownViewer content={paperContent} />
         </article>
+
+        {/* About section link */}
+        <div className="mt-12 pt-8 border-t border-border">
+          <div className="text-center">
+            <button
+              onClick={() => navigate('/about')}
+              className="inline-flex items-center gap-3 px-6 py-3 bg-border/5 hover:bg-border/10 border border-border/30 rounded-lg transition-colors"
+            >
+              <svg className="w-5 h-5 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} 
+                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span className="text-text font-medium">About This Project</span>
+              <span className="text-sm text-muted">→</span>
+            </button>
+            <p className="mt-2 text-sm text-muted">
+              Learn how to use this app and join the discussion
+            </p>
+          </div>
+        </div>
 
         {/* Footer */}
         <footer className="mt-16 pt-8 border-t border-border">
