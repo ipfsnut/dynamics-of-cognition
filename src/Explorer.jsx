@@ -3,6 +3,7 @@ import { Navigation } from './components/Navigation';
 import { getNextSection, getPrevSection } from './data/sections';
 import { Section, SectionHeader, PageNavigation } from './components/Section';
 import { SectionMarkdownViewer } from './components/SectionMarkdownViewer';
+import { SectionSimulations } from './components/SectionSimulations';
 import { Bibliography } from './components/Bibliography';
 import VaultLinks from './components/explorer/VaultLinks';
 
@@ -138,6 +139,9 @@ export function Explorer({ currentSection, onNavigate, onReadPaper }) {
                 content={processVaultContent(vaultContent)} 
                 vaultData={vaultData}
               />
+
+              {/* Render interactive simulations for this section */}
+              <SectionSimulations section={currentSection} />
 
               <VaultLinks sectionSlug={currentSection?.slug} />
               
