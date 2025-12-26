@@ -126,7 +126,7 @@ export function Explorer({ currentSection, onNavigate, onReadPaper }) {
               <p>Loading content...</p>
             </div>
           ) : vaultContent ? (
-            <Section>
+            <Section key={currentSection?.id}>
               <SectionHeader 
                 number={currentSection?.number}
                 title={currentSection?.title}
@@ -136,6 +136,7 @@ export function Explorer({ currentSection, onNavigate, onReadPaper }) {
               />
 
               <SectionMarkdownViewer 
+                key={`md-${currentSection?.id}`}
                 content={processVaultContent(vaultContent)} 
                 vaultData={vaultData}
               />
@@ -156,6 +157,8 @@ export function Explorer({ currentSection, onNavigate, onReadPaper }) {
           ) : (
             <div className="text-center py-20 text-muted">
               <p>Content not found for this section</p>
+              <p className="text-sm mt-2">Section ID: {currentSection?.id}</p>
+              <p className="text-sm">Vault note: {vaultNoteId || 'not mapped'}</p>
             </div>
           )}
         </div>
