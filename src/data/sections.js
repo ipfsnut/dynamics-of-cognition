@@ -19,8 +19,8 @@ export const SECTIONS = [
     number: 1,
     title: 'Free Energy Minimization',
     subtitle: 'The mathematical foundation of self-organization',
-    simulation: 'markov-blanket', // Primary simulation
-    additionalSims: ['free-energy'], // Additional simulations in this section
+    simulation: 'markov-blanket',
+    additionalSims: ['free-energy'],
     references: ['friston2010', 'friston2013', 'friston2023', 'kirchhoff2018', 'bruineberg2022'],
   },
   {
@@ -73,7 +73,6 @@ export const SECTIONS = [
     title: 'The Controllosphere',
     subtitle: 'Expertise as manifold migration',
     simulation: 'controllosphere',
-    additionalSims: ['fatigue-recovery'],
     references: ['holroyd2024'],
   },
   {
@@ -83,7 +82,6 @@ export const SECTIONS = [
     title: 'The Configuration Constraint',
     subtitle: 'H(ω) and the bridging problem',
     simulation: 'annealing',
-    additionalSims: ['energy-affordance', 'csp-experiment'],
     references: [
       'vangelder1995', 'kelso1995', 'thelen-smith1994', 'tognoli-kelso2014',
       'chemero2009', 'noe2004', 'gibson1979', 'varela1991',
@@ -123,7 +121,6 @@ export const SECTIONS = [
     title: 'Consciousness & Meta-Modeling',
     subtitle: 'When the model models itself',
     simulation: 'meta-modeling',
-    additionalSims: ['cognitive-horizon', 'configuration-awareness'],
     references: ['damasio2021', 'damasio2022', 'friston2023'],
   },
   {
@@ -162,15 +159,10 @@ export const SIMULATION_MAP = {
   'autopoiesis': 'AutopoiesisSim',
   'language-controller': 'LanguageControllerSim',
   'controllosphere': 'ControllosphereSim',
-  'fatigue-recovery': 'FatigueRecoverySim',
   'annealing': 'AnnealingSim',
-  'energy-affordance': 'EnergyAffordanceSim',
-  'csp-experiment': 'CSPExperimentSim',
   'predictive-coding': 'PredictiveCodingSim',
   'nested-blankets': 'NestedBlanketsSim',
   'meta-modeling': 'MetaModelingSim',
-  'cognitive-horizon': 'CognitiveHorizonSim',
-  'configuration-awareness': 'ConfigurationAwarenessSim',
   'attractor': 'AttractorSim',
 };
 
