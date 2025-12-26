@@ -1,5 +1,6 @@
 // Section configuration for the Explorer
 // Each section defines its content, simulation, and bibliography references
+// UPDATED: Section numbers now match vault file numbers
 
 export const SECTIONS = [
   {
@@ -61,7 +62,7 @@ export const SECTIONS = [
     slug: 'language-networks',
     number: 5,
     title: 'Language Networks',
-    subtitle: 'A controller running open-loop',
+    subtitle: 'Somatic simulation for communication',
     simulation: 'language-controller',
     references: ['fedorenko2011', 'fedorenko2024a', 'fedorenko2024b', 'shain2020', 'paunov2019', 'tuckute2024'],
   },
@@ -70,8 +71,9 @@ export const SECTIONS = [
     slug: 'controllosphere',
     number: 6,
     title: 'The Controllosphere',
-    subtitle: 'Cognitive effort as neural energetics',
+    subtitle: 'Expertise as manifold migration',
     simulation: 'controllosphere',
+    additionalSims: ['fatigue-recovery'],
     references: ['holroyd2024'],
   },
   {
@@ -79,8 +81,9 @@ export const SECTIONS = [
     slug: 'configuration-constraint',
     number: 7,
     title: 'The Configuration Constraint',
-    subtitle: 'Cognition as whole-body annealing',
+    subtitle: 'H(ω) and the bridging problem',
     simulation: 'annealing',
+    additionalSims: ['energy-affordance', 'csp-experiment'],
     references: [
       'vangelder1995', 'kelso1995', 'thelen-smith1994', 'tognoli-kelso2014',
       'chemero2009', 'noe2004', 'gibson1979', 'varela1991',
@@ -95,7 +98,7 @@ export const SECTIONS = [
     slug: 'empirical-predictions',
     number: 8,
     title: 'Empirical Predictions',
-    subtitle: 'Testing the configuration constraint',
+    subtitle: 'Testing the framework',
     simulation: 'predictive-coding',
     references: [
       'vanderkolk2014', 'vanderkolk-yoga2014', 'ogden2006', 'levine2010', 'payne-levine2015',
@@ -120,6 +123,7 @@ export const SECTIONS = [
     title: 'Consciousness & Meta-Modeling',
     subtitle: 'When the model models itself',
     simulation: 'meta-modeling',
+    additionalSims: ['cognitive-horizon', 'configuration-awareness'],
     references: ['damasio2021', 'damasio2022', 'friston2023'],
   },
   {
@@ -127,7 +131,7 @@ export const SECTIONS = [
     slug: 'critical-perspectives',
     number: 11,
     title: 'Critical Perspectives',
-    subtitle: 'Tensions and open questions',
+    subtitle: 'Honest gap acknowledgment',
     simulation: null,
     references: ['bruineberg2022'],
   },
@@ -158,10 +162,15 @@ export const SIMULATION_MAP = {
   'autopoiesis': 'AutopoiesisSim',
   'language-controller': 'LanguageControllerSim',
   'controllosphere': 'ControllosphereSim',
+  'fatigue-recovery': 'FatigueRecoverySim',
   'annealing': 'AnnealingSim',
+  'energy-affordance': 'EnergyAffordanceSim',
+  'csp-experiment': 'CSPExperimentSim',
   'predictive-coding': 'PredictiveCodingSim',
   'nested-blankets': 'NestedBlanketsSim',
   'meta-modeling': 'MetaModelingSim',
+  'cognitive-horizon': 'CognitiveHorizonSim',
+  'configuration-awareness': 'ConfigurationAwarenessSim',
   'attractor': 'AttractorSim',
 };
 
