@@ -17,11 +17,11 @@ const SECTION_TO_VAULT_MAP = {
   'language': 'canonical/05-language',
   'controllosphere': 'canonical/06-controllosphere',
   'configuration': 'canonical/07-configuration',
-  'predictions': 'canonical/11-predictions',
+  'predictions': 'canonical/08-predictions',
   'nested': 'canonical/09-nested-blankets',
   'consciousness': 'canonical/10-consciousness',
-  'critique': 'canonical/12-critique',
-  'synthesis': 'canonical/13-synthesis',
+  'critique': 'canonical/11-critique',
+  'synthesis': 'canonical/12-synthesis',
 };
 
 /**
